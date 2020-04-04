@@ -42,7 +42,7 @@ public class CreateProfileStep2Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 RadioGroup rg = (RadioGroup) findViewById(R.id.RadioGroupStep2);
-                EditText e1 = findViewById(R.id.InputStep2Poids);
+                EditText e1 = findViewById(R.id.Poids_perder);
                 EditText e2 = findViewById(R.id.InputStep2Taille);
                 String poids = e1.getText().toString();
                 String taille = e2.getText().toString();
@@ -91,7 +91,7 @@ public class CreateProfileStep2Activity extends AppCompatActivity {
     {
 
         RadioGroup rg = (RadioGroup) findViewById(R.id.RadioGroupStep2);
-        EditText e1 = findViewById(R.id.InputStep2Poids);
+        EditText e1 = findViewById(R.id.Poids_perder);
         EditText e2 = findViewById(R.id.InputStep2Taille);
 
         String poids = e1.getText().toString();
@@ -132,7 +132,7 @@ public class CreateProfileStep2Activity extends AppCompatActivity {
 
     public Boolean checkPoids()
     {
-        EditText e1 = findViewById(R.id.InputStep2Poids);
+        EditText e1 = findViewById(R.id.Poids_perder);
         String poids = e1.getText().toString();
         int p = Integer.parseInt(poids);
 

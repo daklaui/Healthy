@@ -9,17 +9,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.EtatActivity"></activity>
+        <activity android:name=".profile_activity"></activity>
+        <activity android:name=".Activities.ProfileActivity" />
+        <activity
+            android:name=".Profile"
+            android:label="@string/title_activity_profile"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activities.LoginActivity" />
+        <activity android:name=".Activities.EtatActivity" />
         <activity android:name=".Activities.CreateProfileStep2Activity" />
-        <activity android:name=".Activities.CreateProfileStep1Activity">
+        <activity android:name=".Creation_Profile" />
+        <activity android:name=".Activities.CreateProfileStep1Activity" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        </activity>
-        <activity android:name=".Activities.LoginActivity" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".Activities.RegisterActivity" />
     </application>

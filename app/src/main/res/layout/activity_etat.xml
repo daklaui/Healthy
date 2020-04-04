@@ -7,39 +7,6 @@
     android:orientation="vertical"
     tools:context=".Activities.EtatActivity">
 
-    <TextView
-        android:id="@+id/TextEtatIMC"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-smallcaps"
-        android:text="Votre IMC : "
-        android:textAlignment="textStart"
-        android:textSize="24sp" />
-    <TextView
-        android:id="@+id/TextEtatEtat"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-smallcaps"
-        android:layout_marginTop="10dp"
-        android:text="Votre Etat : "
-        android:textAlignment="textStart"
-        android:textSize="24sp" />
-    <TextView
-        android:id="@+id/TextEtatRecommandation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-smallcaps"
-        android:layout_marginTop="10dp"
-        android:text="Recommandation : "
-        android:textAlignment="textStart"
-        android:textSize="24sp" />
-    <TextView
-        android:id="@+id/TextEtatTextRecommandation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-smallcaps"
-        android:layout_marginTop="10dp"
-        android:text=""
-        android:textAlignment="center"
-        android:textSize="24sp" />
+
+
 </LinearLayout>

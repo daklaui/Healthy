@@ -1,102 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".Activities.RegisterActivity" >
+    android:background="#829EF3"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".Activities.LoginActivity">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/TextLoginTitre"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:fontFamily="sans-serif-smallcaps"
-            android:text="Authentification"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textSize="30sp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_gravity="center"
-        android:orientation="vertical">
+        android:scrollbarStyle="insideInset"
+        android:scrollbars="vertical">
 
-        <TextView
-            android:id="@+id/TextLoginEmail"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-smallcaps"
-            android:text="Adresse email : "
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textSize="18sp" />
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:theme="@style/AppTheme">
 
-        <EditText
-            android:id="@+id/InputLoginEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textEmailAddress"
-            android:textAlignment="center" />
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="385dp"
+                android:layout_height="191dp"
+                android:layout_marginBottom="20dp"
+                app:srcCompat="@drawable/logo" />
 
-    </LinearLayout>
+            <com.github.florent37.materialtextfield.MaterialTextField
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:mtf_cardCollapsedHeight="1dp"
+                app:mtf_image="@drawable/email"
+                app:mtf_labelColor="@color/colorAccent2">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_gravity="center"
-        android:orientation="vertical">
-        <TextView
-            android:id="@+id/TextLoginPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-smallcaps"
-            android:text="Mot de passe : "
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textSize="18sp" />
-        <EditText
-            android:id="@+id/InputLoginPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPassword"
-            android:textAlignment="center"/>
-    </LinearLayout>
+                <EditText
+                    android:id="@+id/InputLoginEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Email"
+                    android:textColor="#34495e" />
 
-    <Button
-        android:id="@+id/BtnLoginLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="S'authentifier" />
+            </com.github.florent37.materialtextfield.MaterialTextField>
 
-    <TextView
-        android:id="@+id/TextRegisterBetweenButtons"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-smallcaps"
-        android:textAlignment="center"
-        android:text="ou bien" />
+            <com.github.florent37.materialtextfield.MaterialTextField
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                app:mtf_cardCollapsedHeight="1dp"
+                app:mtf_image="@drawable/password"
+                app:mtf_labelColor="@color/colorAccent2">
 
-    <Button
-        android:id="@+id/BtnLoginRegister"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Créer un compte" />
+                <EditText
+                    android:id="@+id/InputLoginPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter Password"
+                    android:inputType="textPassword"
+                    android:textColor="#34495e" />
+
+            </com.github.florent37.materialtextfield.MaterialTextField>
 
 
-</LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+
+                <Button
+                    android:id="@+id/BtnLoginLogin"
+                    style="@style/AppTheme.RoundedCornerMaterialButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Login"
+                    android:textColor="#FFFFFF" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/fonts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="|"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/BtnLoginRegister"
+                    style="@style/fonts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" S'inscrire maintenant" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>

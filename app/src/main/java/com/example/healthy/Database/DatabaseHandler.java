@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.healthy.Classes.Account;
 import com.example.healthy.Classes.Profile;
+import com.example.healthy.Classes.Regime;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
 
@@ -30,8 +31,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String PROFILE_POIDS = "poids";
     private static final String PROFILE_TAILLE = "taille";
     private static final String PROFILE_IMC = "imc";
-
-
+    //TABLE REGIME_CHOIX
+    private static final String TABLE_REGIME = "REGIME";
+    private static final String REGIME_ID = "id";
+    private static final String DEGRE_ACTIVITE = "degre_activite";
+    private static final String NEW_POIDS = "nouveau_poids";
+    private static final String OBJECTIF = "objectif";
+    private static final String TYPE_REGIME = "type_regime";
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -44,17 +50,23 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         String CREATE_PROFILE_TABLE = "CREATE TABLE " + TABLE_PROFILE + "("
                 + PROFILE_ID + " INTEGER  PRIMARY KEY AUTOINCREMENT ," + PROFILE_NOM + " TEXT,"
                 + PROFILE_PRENOM+ " TEXT,"+ PROFILE_ANNIVERSAIRE+ " TEXT,"+ PROFILE_AGE +" INTEGER,"
-                + PROFILE_SEXE+ " TEXT,"+ PROFILE_POIDS + " INTEGER,"+PROFILE_TAILLE+" DOUBLE,"+
+                + PROFILE_SEXE+ " TEXT,"+ PROFILE_POIDS + " DOUBLE,"+PROFILE_TAILLE+" DOUBLE,"+
                 PROFILE_IMC+" INTEGER" + ")";
+
+        String CREATE_REGIME_TABLE = "CREATE TABLE " + TABLE_REGIME + "("
+                + REGIME_ID + " INTEGER  PRIMARY KEY AUTOINCREMENT ," + DEGRE_ACTIVITE + " INTEGER,"
+                + NEW_POIDS+ " DOUBLE,"+ OBJECTIF+ " INTEGER,"+ TYPE_REGIME+ " TEXT" + ")";
 
         db.execSQL(CREATE_ACCOUNT_TABLE);
         db.execSQL(CREATE_PROFILE_TABLE);
+        db.execSQL(CREATE_REGIME_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_ACCOUNT);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_PROFILE);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_REGIME);
         onCreate(db);
     }
 
@@ -74,6 +86,19 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Cursor cursor = db.query(TABLE_ACCOUNT, new String[] { KEY_ID,
                         KEY_EMAIL,KEY_PASSWORD}, KEY_EMAIL + "=?",
                 new String[] { String.valueOf(email) }, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        Account compte = new Account(Integer.parseInt(cursor.getString(0)),
+                cursor.getString(1), cursor.getString(2));
+        return compte;
+    }
+    public Account getAccount_parid(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(TABLE_ACCOUNT, new String[] { KEY_ID,
+                        KEY_EMAIL,KEY_PASSWORD}, KEY_ID + "=?",
+                new String[] { String.valueOf(id) }, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
 
@@ -139,6 +164,33 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return profil;
     }
 
+
+
+    public Regime getRegime(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(TABLE_REGIME, new String[] { REGIME_ID ,
+                        DEGRE_ACTIVITE ,NEW_POIDS ,OBJECTIF ,TYPE_REGIME }, REGIME_ID + "=?",
+                new String[] { String.valueOf(id) }, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        Regime regime = new Regime(Integer.parseInt(cursor.getString(0)),
+                Integer.parseInt(cursor.getString(3)), cursor.getString(4), Integer.parseInt(cursor.getString(1)),Double.parseDouble(cursor.getString(2)));
+        return regime;
+    }
+
+    //Account methods
+    public void addregime(Regime regime) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(DEGRE_ACTIVITE, regime.getDegre_act());
+        values.put(NEW_POIDS, regime.getNew_poids());
+        values.put(OBJECTIF, regime.getObjectif());
+        values.put(TYPE_REGIME, regime.getTyp_regime());
+        db.insert(TABLE_REGIME, null, values);
+        db.close();
+    }
 
 
 

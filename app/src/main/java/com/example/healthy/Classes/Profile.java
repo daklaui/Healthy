@@ -10,14 +10,14 @@ public class Profile {
     String _anniversaire ;
     int _age ;
     String _sexe;
-    int _poids ;
+    double _poids ;
     int _taille ;
     double _imc ;
 
     public Profile() {
     }
 
-    public Profile(int _id, String _nom, String _prénom, String _anniversaire, int _age, String _sexe, int _poids, int _taille, double _imc) {
+    public Profile(int _id, String _nom, String _prénom, String _anniversaire, int _age, String _sexe, double _poids, int _taille, double _imc) {
         this._id = _id;
         this._nom = _nom;
         this._prénom = _prénom;
@@ -77,11 +77,11 @@ public class Profile {
         this._sexe = _sexe;
     }
 
-    public int get_poids() {
+    public double get_poids() {
         return _poids;
     }
 
-    public void set_poids(int _poids) {
+    public void set_poids(double _poids) {
         this._poids = _poids;
     }
 

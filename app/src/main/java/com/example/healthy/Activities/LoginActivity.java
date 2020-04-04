@@ -9,10 +9,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.healthy.Classes.Account;
+import com.example.healthy.Creation_Profile;
 import com.example.healthy.Database.DatabaseHandler;
+import com.example.healthy.Profile;
 import com.example.healthy.R;
 
 public class LoginActivity extends AppCompatActivity {
@@ -24,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         Button b1 = findViewById(R.id.BtnLoginLogin);
-        Button b2 = findViewById(R.id.BtnLoginRegister);
+        TextView b2 = findViewById(R.id.BtnLoginRegister);
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
                                 {
                                     Account compte = db.getAccount(Email);
                                     Toast.makeText(getApplicationContext(),compte.get_id()+" "+compte.get_email()+" "+compte.get_password(),Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(view.getContext(), CreateProfileStep1Activity.class);
+                                    Intent intent = new Intent(view.getContext(), Profile.class);
                                     view.getContext().startActivity(intent);
                                 }
                                 else
@@ -87,7 +90,7 @@ public class LoginActivity extends AppCompatActivity {
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), RegisterActivity.class);
+                Intent intent = new Intent(view.getContext(), Creation_Profile.class);
                 view.getContext().startActivity(intent);}
         });
 
