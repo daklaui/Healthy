@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.healthy.Classes.Account;
+import com.example.healthy.Classes.Diet;
 import com.example.healthy.Classes.Profile;
 import com.example.healthy.Classes.Regime;
 
@@ -38,6 +39,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String NEW_POIDS = "nouveau_poids";
     private static final String OBJECTIF = "objectif";
     private static final String TYPE_REGIME = "type_regime";
+
+    //TABLE DIET
+    private static final String TABLE_DIET = "DIET" ;
+    private static final String DIET_ID = "id";
+    private static final String DIET_TYPE = "Diet_Type";
+    private static final String DIET_CALORIES  = "Nb_Calories";
+
+
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -57,9 +66,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + REGIME_ID + " INTEGER  PRIMARY KEY AUTOINCREMENT ," + DEGRE_ACTIVITE + " INTEGER,"
                 + NEW_POIDS+ " DOUBLE,"+ OBJECTIF+ " INTEGER,"+ TYPE_REGIME+ " TEXT" + ")";
 
+        String CREATE_DIET_TABLE = "CREATE TABLE " + TABLE_DIET + "("
+                + DIET_ID + " INTEGER  PRIMARY KEY AUTOINCREMENT ," + DIET_TYPE + " TEXT,"
+                + DIET_CALORIES+ " INTEGER)";
+
         db.execSQL(CREATE_ACCOUNT_TABLE);
         db.execSQL(CREATE_PROFILE_TABLE);
         db.execSQL(CREATE_REGIME_TABLE);
+        db.execSQL(CREATE_DIET_TABLE);
+
+
     }
 
     @Override
@@ -191,6 +207,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.insert(TABLE_REGIME, null, values);
         db.close();
     }
+
+    //add diet
+    public void adddiet(Diet diet) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(DIET_TYPE, diet.getType());
+        values.put(DIET_CALORIES,diet.getCalories());
+        db.insert(TABLE_DIET, null, values);
+        db.close();
+    }
+
 
 
 

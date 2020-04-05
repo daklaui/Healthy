@@ -22,6 +22,7 @@ import com.divyanshu.colorseekbar.ColorSeekBar;
 import com.example.healthy.Activities.LoginActivity;
 import com.example.healthy.Adapters.CustomViewPagerNoSwip;
 import com.example.healthy.Classes.Account;
+import com.example.healthy.Classes.Diet;
 import com.example.healthy.Classes.Profile;
 import com.example.healthy.Classes.Regime;
 import com.example.healthy.Database.DatabaseHandler;
@@ -600,9 +601,33 @@ else
             t3.setText(t3.getText().toString()+" Perdre du poids");
           //  t4.setText(t4.getText().toString()+"Si votre IMC est supérieur à 25, vous êtes en situation de surpoids. peut-il apparaître nécessaire pour vous de maigrir : mais rien ne remplace une consultation chez le médecin, seul lui pourra vous donner la marche à suivre. ");
         }
+    }
 
 
 
+    public double calculePoidIdeal(double imc , double t )
+    {
+        double res ;
+        res = imc * Math.pow(t,2.0) ;
+        return res;
+    }
+
+    public void addDiet()
+    {
+        Diet d250 = new Diet("Perdre 250 g par semaine " , 1800);
+        Diet d500 = new Diet("Perdre 500 g par semaine " , 1700);
+        Diet d750 = new Diet("Perdre 750 g par semaine " , 1600);
+        Diet d1000 = new Diet("Perdre 1000 g par semaine " , 1500);
+        Diet d0 = new Diet("Maintenir le poids " , 2000);
+        Diet dx250 = new Diet("Avoir 250 g par semaine " , 2250);
+        Diet dx500 = new Diet("Avoir 500 g par semaine" , 2500);
+        db.adddiet(d250);
+        db.adddiet(d500);
+        db.adddiet(d750);
+        db.adddiet(d1000);
+        db.adddiet(d0);
+        db.adddiet(dx250);
+        db.adddiet(dx500);
     }
 }
 
