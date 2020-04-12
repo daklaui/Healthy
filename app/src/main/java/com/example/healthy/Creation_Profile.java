@@ -23,8 +23,11 @@ import com.example.healthy.Activities.LoginActivity;
 import com.example.healthy.Adapters.CustomViewPagerNoSwip;
 import com.example.healthy.Classes.Account;
 import com.example.healthy.Classes.Diet;
+import com.example.healthy.Classes.Nourriture;
+import com.example.healthy.Classes.Portion;
 import com.example.healthy.Classes.Profile;
 import com.example.healthy.Classes.Regime;
+import com.example.healthy.Classes.TypeNourriture;
 import com.example.healthy.Database.DatabaseHandler;
 import com.example.healthy.Fragments_Profile.Step1;
 import com.example.healthy.Fragments_Profile.Step2;
@@ -37,6 +40,7 @@ import com.example.healthy.Fragments_Profile.Step8;
 import com.github.anastr.speedviewlib.SpeedView;
 import com.github.anastr.speedviewlib.components.Section;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.regex.Pattern;
@@ -629,6 +633,26 @@ else
         db.adddiet(dx250);
         db.adddiet(dx500);
     }
+
+    public void addNourriture()
+    {
+        Portion p1 = new Portion("Yaourt " , " 100 g ");
+        Portion p2 = new Portion("Bouteille " , " 250 cl ");
+        Portion p3 = new Portion("Assiete","1");
+        db.addPortion(p1);
+        db.addPortion(p2);
+        db.addPortion(p3);
+        TypeNourriture tn1 = new TypeNourriture("Plat");
+        TypeNourriture tn2 = new TypeNourriture("Boisson");
+        TypeNourriture tn3 = new TypeNourriture("Aliments");
+        db.addTypeNourriture(tn1);
+        db.addTypeNourriture(tn2);
+        db.addTypeNourriture(tn3);
+        Nourriture n1 = new Nourriture("Delice - Yaourt Nature",tn3.getNomtype(),100,p1.getTypePortion(),p1.getTypePortion());
+        Nourriture n2 = new Nourriture("Salade Verte",tn1.getNomtype(),13,p3.getTypePortion(),p3.getQuantitéParPotion());
+        db.addNourriture(n1);
+        db.addNourriture(n2);
+    }
 }
 
 class AuthenticationPagerAdapter extends FragmentPagerAdapter {
@@ -652,4 +676,8 @@ class AuthenticationPagerAdapter extends FragmentPagerAdapter {
         fragmentList.add(fragment);
     }
 }
+
+
+
+
 

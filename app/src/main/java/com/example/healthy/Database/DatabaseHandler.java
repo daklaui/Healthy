@@ -8,8 +8,11 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.healthy.Classes.Account;
 import com.example.healthy.Classes.Diet;
+import com.example.healthy.Classes.Nourriture;
+import com.example.healthy.Classes.Portion;
 import com.example.healthy.Classes.Profile;
 import com.example.healthy.Classes.Regime;
+import com.example.healthy.Classes.TypeNourriture;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
 
@@ -46,6 +49,34 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String DIET_TYPE = "Diet_Type";
     private static final String DIET_CALORIES  = "Nb_Calories";
 
+    //TABLE PORTION
+    private static final String TABLE_PORTION = "PORTION" ;
+    private static final String PORTION_ID = "id";
+    private static final String PORTION_TYPE = "Portion_Type";
+    private static final String PORTION_QUANTITE  = "Portion_quantite";
+
+    //TABLE TYPENOURRITURE
+    private static final String TABLE_TYPENOURRITURE = "TYPENOURRITURE" ;
+    private static final String TYPENOURRITURE_ID = "id";
+    private static final String TYPENOURRITUE_TYPE = "TypeNourriture_Type";
+
+    //table Nourriture
+    private static final String TABLE_NOURRITURE = "NOURRITURE" ;
+    private static final String NOURRITURE_ID = "id";
+    private static final String NOURRITURE_Nom = "Nourriture_Nom";
+    private static final String NOURRITURE_TYPE = "Nourriture_Type";
+    private static final String NOURRITURE_CALORIES = "Nourriture_Calories";
+    private static final String NOURRITURE_GRAISSE = "Nourriture_Graisse";
+    private static final String NOURRITURE_CHOLESTEROL = "Nourriture_Cholesterol";
+    private static final String NOURRITURE_SODIUM = "Nourriture_Sodium";
+    private static final String NOURRITURE_SUCRES = "Nourriture_Sucres";
+    private static final String NOURRITURE_PROTEIN = "Nourriture_Protein";
+    private static final String NOURRITURE_VITAMINA = "Nourriture_VITAMINA";
+    private static final String NOURRITURE_VITAMINC = "Nourriture_VITAMINC";
+    private static final String NOURRITURE_FER = "Nourriture_Fer";
+    private static final String NOURRITURE_CALCIUM = "Nourriture_Calcium";
+    private static final String NOURRITURE_TYPE_PORTION = "Nourriture_Type_Portion";
+    private static final String NOURRITURE_Qunatite_Portion = "Nourriture_QUantite_Portion";
 
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -70,11 +101,28 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + DIET_ID + " INTEGER  PRIMARY KEY AUTOINCREMENT ," + DIET_TYPE + " TEXT,"
                 + DIET_CALORIES+ " INTEGER)";
 
+        String CREATE_PORTION_TABLE = "CREATE TABLE " + TABLE_PORTION + "("
+                + PORTION_ID + " INTEGER  PRIMARY KEY AUTOINCREMENT ," + PORTION_TYPE + " TEXT,"
+                + PORTION_QUANTITE+ " TEXT)";
+
+        String CREATE_TYPE_NOURRITURE_TABLE = "CREATE TABLE " + TABLE_TYPENOURRITURE + "("
+                + TYPENOURRITURE_ID + " INTEGER  PRIMARY KEY AUTOINCREMENT ," + TYPENOURRITUE_TYPE + " TEXT)";
+
+        String CREATE_NOURRITURE_TABLE = "CREATE TABLE " + TABLE_NOURRITURE + "("
+                + NOURRITURE_ID + " INTEGER  PRIMARY KEY AUTOINCREMENT ," + NOURRITURE_Nom + " TEXT,"
+                + NOURRITURE_TYPE+ " TEXT,"+ NOURRITURE_CALORIES+ " INTEGER,"+ NOURRITURE_GRAISSE +" DOUBLE,"
+                + NOURRITURE_CHOLESTEROL+ " DOUBLE,"+ NOURRITURE_SODIUM + " DOUBLE,"+NOURRITURE_SUCRES+" DOUBLE,"+NOURRITURE_PROTEIN+" DOUBLE,"+NOURRITURE_VITAMINA+" DOUBLE,"+
+                NOURRITURE_VITAMINC+" DOUBLE,"+NOURRITURE_FER+" DOUBLE,"+NOURRITURE_CALCIUM+" DOUBLE,"+NOURRITURE_TYPE_PORTION+" TEXT,"+
+               NOURRITURE_Qunatite_Portion+" TEXT" + ")";
+
+
         db.execSQL(CREATE_ACCOUNT_TABLE);
         db.execSQL(CREATE_PROFILE_TABLE);
         db.execSQL(CREATE_REGIME_TABLE);
         db.execSQL(CREATE_DIET_TABLE);
-
+        db.execSQL(CREATE_PORTION_TABLE);
+        db.execSQL(CREATE_TYPE_NOURRITURE_TABLE);
+        db.execSQL(CREATE_NOURRITURE_TABLE);
 
     }
 
@@ -83,6 +131,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_ACCOUNT);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_PROFILE);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_REGIME);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_DIET);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_PORTION);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_TYPENOURRITURE);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NOURRITURE);
         onCreate(db);
     }
 
@@ -217,6 +269,49 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.insert(TABLE_DIET, null, values);
         db.close();
     }
+
+    //add portion
+    public void addPortion(Portion portion) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(PORTION_TYPE, portion.getTypePortion());
+        values.put(PORTION_QUANTITE,portion.getQuantitéParPotion());
+        db.insert(TABLE_PORTION, null, values);
+        db.close();
+    }
+
+    //add typenourriture
+    public void addTypeNourriture(TypeNourriture tn) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(TYPENOURRITUE_TYPE, tn.getNomtype());
+        db.insert(TABLE_TYPENOURRITURE, null, values);
+        db.close();
+    }
+
+
+    //add noourriture
+    public void addNourriture(Nourriture n) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(NOURRITURE_Nom, n.getNom());
+        values.put(NOURRITURE_TYPE, n.getType());
+        values.put(NOURRITURE_CALORIES, n.getCalories());
+        values.put(NOURRITURE_GRAISSE, n.getGraisse());
+        values.put(NOURRITURE_CHOLESTEROL, n.getCholesterol());
+        values.put(NOURRITURE_SODIUM, n.getSodium());
+        values.put(NOURRITURE_SUCRES, n.getSucres());
+        values.put(NOURRITURE_PROTEIN, n.getProtein());
+        values.put(NOURRITURE_VITAMINA, n.getVitaminA());
+        values.put(NOURRITURE_VITAMINC, n.getVitaminC());
+        values.put(NOURRITURE_FER, n.getFer());
+        values.put(NOURRITURE_CALCIUM, n.getCalcium());
+        values.put(NOURRITURE_TYPE_PORTION, n.getTypePortion());
+        values.put(NOURRITURE_Qunatite_Portion, n.getQuantitéParPortion());
+        db.insert(TABLE_NOURRITURE, null, values);
+        db.close();
+    }
+
 
 
 
