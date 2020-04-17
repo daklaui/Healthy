@@ -19,6 +19,19 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="sans-serif-smallcaps"
+                    android:padding="10dp"
+                    android:text="Indice de Masse Corporelle (IMC)  : "
+                    android:textAlignment="textStart"
+                    android:textColor="#212121"
+                    android:textSize="18sp"
+                    android:textStyle="bold"  />
+
                 <com.github.anastr.speedviewlib.SpeedView
                     android:id="@+id/speedView"
                     android:layout_width="wrap_content"

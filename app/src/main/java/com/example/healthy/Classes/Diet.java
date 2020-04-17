@@ -43,4 +43,8 @@ public class Diet {
 
     public Diet() {
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> github/master
