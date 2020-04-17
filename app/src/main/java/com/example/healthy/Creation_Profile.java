@@ -22,6 +22,8 @@ import com.divyanshu.colorseekbar.ColorSeekBar;
 import com.example.healthy.Activities.LoginActivity;
 import com.example.healthy.Adapters.CustomViewPagerNoSwip;
 import com.example.healthy.Classes.Account;
+import com.example.healthy.Classes.Diet;
+import com.example.healthy.Classes.Historique_Regime;
 import com.example.healthy.Classes.Profile;
 import com.example.healthy.Classes.Regime;
 import com.example.healthy.Database.DatabaseHandler;
@@ -55,6 +57,7 @@ public class Creation_Profile extends AppCompatActivity {
     double IMC;
     KdGaugeView speedoMeterView;
     SpeedView speedView;
+    double Min_poids,Max_poids;
     DatabaseHandler db = new DatabaseHandler(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -362,18 +365,31 @@ public class Creation_Profile extends AppCompatActivity {
             r1=pagerAdapter.getItem(4).getView().findViewById(R.id.r1);
             r2=pagerAdapter.getItem(4).getView().findViewById(R.id.r2);
             r3=pagerAdapter.getItem(4).getView().findViewById(R.id.r3);
+            int taille=Integer.parseInt(Taille.getText().toString());
+            Min_poids=calculePoidIdeal(20,taille);
+            Max_poids=calculePoidIdeal(25,taille);
 
             if(IMC < 18.5)
             {
                 Log.e("IMC",String.valueOf(IMC));
+
+                TextView   text_ideal=pagerAdapter.getItem(6).getView().findViewById(R.id.Poididal2);
+
+                text_ideal.setText("[ "+Min_poids+" . . "+Max_poids+"]");
                 viewPager.setCurrentItem(6);
-            }
+        }
             else if((IMC >= 18.5) && (IMC <= 25))
             {
+
+
                 viewPager.setCurrentItem(7);
             }
             else
             {
+                TextView   text_ideal=pagerAdapter.getItem(5).getView().findViewById(R.id.Poids_ideal);
+
+                text_ideal.setText("[ "+Min_poids+" . . "+Max_poids+"]");
+
                 viewPager.setCurrentItem(5);
             }
 
@@ -385,7 +401,6 @@ public class Creation_Profile extends AppCompatActivity {
             r2_perder=pagerAdapter.getItem(5).getView().findViewById(R.id.r2_Perder);
             r3_perder=pagerAdapter.getItem(5).getView().findViewById(R.id.r3_Perder);
             r4_perder=pagerAdapter.getItem(5).getView().findViewById(R.id.r4_Perder);
-
 
             New_Poids_Perder=pagerAdapter.getItem(5).getView().findViewById(R.id.Poids_Perder2);
 
@@ -451,6 +466,7 @@ else
        accept=pagerAdapter.getItem(7).getView().findViewById(R.id.accepte);
        if(accept.isChecked())
        {
+           addDiet();
            if (H.isChecked())
            {
                sexe="H";
@@ -544,6 +560,18 @@ else
            }
            r.setDegre_act(choix0);
            db.addregime(r);
+
+
+           Historique_Regime historique_regime = new Historique_Regime();
+           historique_regime.setNew_Poids(p.get_poids());
+           historique_regime.setDate(getDay());
+           historique_regime.setNew_IMC(calculeIMC(p.get_poids(),p.get_taille()));
+           historique_regime.setEvolution(0);
+           db.addHistorique_Regime(historique_regime);
+
+
+
+
            startActivity(new Intent(Creation_Profile.this, com.example.healthy.Profile.class));
        }
        else
@@ -554,6 +582,37 @@ else
     }
 
 
+    public String getDay()
+    {
+
+        Calendar calendar = Calendar.getInstance();
+        final int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        month=month+1;
+        String day_1="";
+        String Month_1="";
+        if(day<10)
+        {
+            day_1="0"+day;
+
+        }
+        else
+        {
+            day_1=String.valueOf(day);
+        }
+        if(month<10)
+        {
+            Month_1="0"+month;
+        }
+        else
+        {
+            Month_1=String.valueOf(month);
+        }
+        return day_1+"-"+Month_1+"-"+year;
+
+    }
 
 
     public void previous_fragment(View view) {
@@ -603,7 +662,33 @@ else
 
 
 
+
     }
+    public double calculePoidIdeal(double imc , int t )
+    {
+        double res ;
+        res = imc * Math.pow(((double)t/100),2.0) ;
+        return res;
+    }
+
+    public void addDiet()
+    {
+        Diet d250 = new Diet("Perdre 250 g par semaine " , 1800);
+        Diet d500 = new Diet("Perdre 500 g par semaine " , 1700);
+        Diet d750 = new Diet("Perdre 750 g par semaine " , 1600);
+        Diet d1000 = new Diet("Perdre 1000 g par semaine " , 1500);
+        Diet d0 = new Diet("Maintenir le poids " , 2000);
+        Diet dx250 = new Diet("Avoir 250 g par semaine " , 2250);
+        Diet dx500 = new Diet("Avoir 500 g par semaine" , 2500);
+        db.adddiet(d250);
+        db.adddiet(d500);
+        db.adddiet(d750);
+        db.adddiet(d1000);
+        db.adddiet(d0);
+        db.adddiet(dx250);
+        db.adddiet(dx500);
+    }
+
 }
 
 class AuthenticationPagerAdapter extends FragmentPagerAdapter {

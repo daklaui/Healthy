@@ -5,7 +5,7 @@ android {
     buildToolsVersion "29.0.3"
     defaultConfig {
         applicationId "com.example.healthy"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -48,5 +48,10 @@ dependencies {
     implementation 'com.divyanshu.colorseekbar:colorseekbar:1.0'
     implementation 'in.unicodelabs.sorbh:kdgaugeview:1.0.0'
     implementation 'com.github.anastr:speedviewlib:1.5.2'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.github.simonebortolin:MaterialSearchBar:0.10'
+    implementation 'com.king.view:arcseekbar:1.0.0'
+    //Android-WheelProgress13042020
+    implementation 'com.zekapp.library:progreswheelview:1.1.5'
 
 }

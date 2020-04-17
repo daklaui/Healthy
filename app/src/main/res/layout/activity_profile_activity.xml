@@ -15,6 +15,30 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
+                android:padding="35dp">
+
+                <com.app.progresviews.ProgressLine
+                    android:id="@+id/progress_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_weight="0.9"
+                    app:definition="Kg"
+                    app:lineBarWidth="7dp"
+                    app:lineProgressColor="#43bd9f"
+                    app:underLineColor="@android:color/darker_gray"
+                    app:value="0"
+                    app:valueDefTextSize="20sp"
+                    app:valuePercentage="15" />
+            </androidx.cardview.widget.CardView>
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -7,8 +7,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.healthy.Classes.Account;
+import com.example.healthy.Classes.Diet;
+import com.example.healthy.Classes.Historique_Regime;
 import com.example.healthy.Classes.Profile;
 import com.example.healthy.Classes.Regime;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
 
@@ -38,6 +43,30 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String NEW_POIDS = "nouveau_poids";
     private static final String OBJECTIF = "objectif";
     private static final String TYPE_REGIME = "type_regime";
+    //TABLE HISTORIQUE_REGIME
+    private static final String TABLE_HISTORIQUE_REGIME = "HISTORIQUE_REGIME";
+    private static final String HISTORIQUE_REGIME_ID = "id";
+    private static final String HISTORIQUE_REGIME_DATE= "Date_Historique";
+    private static final String HISTORIQUE_REGIME_NEW_POIDS = "Historique_nouveau_poids";
+    private static final String HISTORIQUE_REGIME_EVOLUTION = "Historique_evolution";
+    private static final String HISTORIQUE_REGIME_NEW_IMC = "new_Imc";
+    //TABLE DIET
+    private static final String TABLE_DIET = "DIET" ;
+    private static final String DIET_ID = "id";
+    private static final String DIET_TYPE = "Diet_Type";
+    private static final String DIET_CALORIES  = "Nb_Calories";
+    //TABLE DAILY_FOOD
+    private static final String DAILY_FOOD = "DAILY_FOOD" ;
+    private static final String DAILY_FOOD_ID = "id";
+    private static final String DAILY_FOOD_ID_PUBLIC = "id_Api";
+    private static final String DAILY_FOOD_TITRE  = "titre";
+    private static final String DAILY_FOOD_CALORIES  = "Nb_Calories";
+    private static final String DAILY_FOOD_CARBS  = "Nb_Carbs";
+    private static final String DAILY_FOOD_PROTIEN  = "Nb_Protien";
+    private static final String DAILY_FOOD_IMAGE  = "ImageUrl";
+    private static final String DAILY_FOOD_FAT  = "Nb_Fat";
+    private static final String DAILY_FOOD_DATE  = "Date";
+    private static final String DAILY_FOOD_TYPE  = "Type";
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -57,9 +86,29 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + REGIME_ID + " INTEGER  PRIMARY KEY AUTOINCREMENT ," + DEGRE_ACTIVITE + " INTEGER,"
                 + NEW_POIDS+ " DOUBLE,"+ OBJECTIF+ " INTEGER,"+ TYPE_REGIME+ " TEXT" + ")";
 
+        String CREATE_TABLE_HISTORIQUE_REGIME = "CREATE TABLE " + TABLE_HISTORIQUE_REGIME + "("
+                + HISTORIQUE_REGIME_ID + " INTEGER  PRIMARY KEY AUTOINCREMENT ," + HISTORIQUE_REGIME_DATE+ " TEXT,"
+                + HISTORIQUE_REGIME_NEW_POIDS+ " DOUBLE,"+ HISTORIQUE_REGIME_EVOLUTION+ " DOUBLE,"+ HISTORIQUE_REGIME_NEW_IMC+ " DOUBLE" + ")";
+
+
+        String CREATE_DIET_TABLE = "CREATE TABLE " + TABLE_DIET + "("
+                + DIET_ID + " INTEGER  PRIMARY KEY AUTOINCREMENT ," + DIET_TYPE + " TEXT,"
+                + DIET_CALORIES+ " INTEGER)";
+
+        String CREATE_DAILY_FOOD = "CREATE TABLE " + DAILY_FOOD + "("
+                + DAILY_FOOD_ID + " INTEGER  PRIMARY KEY AUTOINCREMENT ," + DAILY_FOOD_ID_PUBLIC + " INTEGER,"
+                + DAILY_FOOD_TITRE+ " TEXT,"+ DAILY_FOOD_CALORIES+ " TEXT,"+ DAILY_FOOD_CARBS +" TEXT,"
+                + DAILY_FOOD_PROTIEN+ " TEXT,"+ DAILY_FOOD_IMAGE + " TEXT,"+DAILY_FOOD_FAT+" TEXT,"+
+                DAILY_FOOD_DATE+" TEXT,"+DAILY_FOOD_TYPE+" TEXT" + ")";
+
+
+
         db.execSQL(CREATE_ACCOUNT_TABLE);
         db.execSQL(CREATE_PROFILE_TABLE);
         db.execSQL(CREATE_REGIME_TABLE);
+        db.execSQL(CREATE_TABLE_HISTORIQUE_REGIME);
+        db.execSQL(CREATE_DIET_TABLE);
+        db.execSQL(CREATE_DAILY_FOOD);
     }
 
     @Override
@@ -67,6 +116,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_ACCOUNT);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_PROFILE);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_REGIME);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_DIET);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_HISTORIQUE_REGIME);
+        db.execSQL("DROP TABLE IF EXISTS " + DAILY_FOOD);
         onCreate(db);
     }
 
@@ -193,13 +245,80 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
 
+    //add diet
+    public void adddiet(Diet diet) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(DIET_TYPE, diet.getType());
+        values.put(DIET_CALORIES,diet.getCalories());
+        db.insert(TABLE_DIET, null, values);
+        db.close();
+    }
+
+    public Diet getDiet(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(TABLE_DIET, new String[] { DIET_ID ,
+                        DIET_TYPE ,DIET_CALORIES }, DIET_ID + "=?",
+                new String[] { String.valueOf(id) }, null, null, null, null);
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        Diet diet = new Diet(cursor.getString(1),
+                Integer.parseInt(cursor.getString(2)));
+        return diet;
+    }
+
+    //Historique_Regime
+    public void addHistorique_Regime(Historique_Regime regime) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(HISTORIQUE_REGIME_DATE, regime.getDate());
+        values.put(HISTORIQUE_REGIME_NEW_POIDS, regime.getNew_Poids());
+        values.put(HISTORIQUE_REGIME_EVOLUTION, regime.getEvolution());
+        values.put(HISTORIQUE_REGIME_NEW_IMC, regime.getNew_IMC());
+        db.insert(TABLE_HISTORIQUE_REGIME, null, values);
+        db.close();
+    }
+
+    public List<Historique_Regime> getListeHistorique_Regime(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+List<Historique_Regime> historique_regimes= new ArrayList<>();
+        Cursor cursor = db.query(TABLE_HISTORIQUE_REGIME, new String[] { HISTORIQUE_REGIME_ID ,
+                        HISTORIQUE_REGIME_DATE ,HISTORIQUE_REGIME_NEW_POIDS,HISTORIQUE_REGIME_EVOLUTION,HISTORIQUE_REGIME_NEW_IMC },null,
+                 null, null, null, null);
+        if (cursor != null)
+           if(cursor.moveToFirst())
+           {
+               do{
+                   Historique_Regime Historique_Regime = new Historique_Regime(  Integer.parseInt(cursor.getString(0)),cursor.getString(1),Double.parseDouble(cursor.getString(2)),Double.parseDouble(cursor.getString(3)),Double.parseDouble(cursor.getString(4)));
+                   historique_regimes.add(Historique_Regime);
+               }while (cursor.moveToNext());
+           }
+
+
+
+        return historique_regimes;
+    }
+
+    public Historique_Regime isteHistorique_Regime() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(TABLE_HISTORIQUE_REGIME, new String[] { HISTORIQUE_REGIME_ID ,
+                        HISTORIQUE_REGIME_DATE ,HISTORIQUE_REGIME_NEW_POIDS,HISTORIQUE_REGIME_EVOLUTION,HISTORIQUE_REGIME_NEW_IMC }, null,
+             null, null,null,HISTORIQUE_REGIME_ID+" DESC" , "1");
+        if (cursor != null)
+            cursor.moveToFirst();
+
+
+                    Historique_Regime Historique_Regime = new Historique_Regime(  Integer.parseInt(cursor.getString(0)),cursor.getString(1),Double.parseDouble(cursor.getString(2)),Double.parseDouble(cursor.getString(3)),Double.parseDouble(cursor.getString(4)));
 
 
 
 
 
 
-
-
+        return Historique_Regime;
+    }
 
 }
