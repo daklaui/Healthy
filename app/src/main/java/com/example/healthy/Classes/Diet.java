@@ -1,9 +1,9 @@
 package com.example.healthy.Classes;
 
 public class Diet {
-    int id ;
-    String type ;
-    int calories ;
+    int id;
+    String type;
+    int calories;
 
 
     public int getId() {
@@ -43,8 +43,5 @@ public class Diet {
 
     public Diet() {
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> github/master
+
