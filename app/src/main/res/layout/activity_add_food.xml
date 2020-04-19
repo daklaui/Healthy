@@ -16,7 +16,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:mt_hint="Custom hint"
+        app:mt_hint="Entrez votre recherche "
         app:mt_maxSuggestionsCount="10"
         app:mt_speechMode="true" />
 
