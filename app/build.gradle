@@ -34,7 +34,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    implementation 'com.android.volley:volley:1.1.0'
+
     implementation 'com.google.code.gson:gson:2.4'
     implementation 'joda-time:joda-time:2.9.1'
     implementation 'com.github.florent37:materialtextfield:1.0.7'
@@ -51,6 +51,9 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'com.github.simonebortolin:MaterialSearchBar:0.10'
     implementation 'com.king.view:arcseekbar:1.0.0'
+    implementation 'dev.dworks.libs:volleyplus:+'
+    implementation 'com.squareup.okhttp3:okhttp:4.2.0'
+    implementation 'com.karumi:dexter:5.0.0'
     //Android-WheelProgress13042020
     implementation 'com.zekapp.library:progreswheelview:1.1.5'
 

@@ -1,11 +1,14 @@
 package com.example.healthy.Adapters;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -15,18 +18,25 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.healthy.Classes.Food;
+import com.example.healthy.Creation_Profile;
+import com.example.healthy.LoadingDialog;
 import com.example.healthy.R;
+import com.example.healthy.addFood;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class FoodAdapter extends RecyclerView.Adapter<MyViewHolder> {
+
     private Context context;
     private List<Food> foodlist;
-    public FoodAdapter(Context context, List<Food> foodlist) {
+    Activity activity;
+    AlertDialog alertDialog;
+    public FoodAdapter(Context context, List<Food> foodlist,Activity activity) {
         super();
         this.context = context;
         this.foodlist = foodlist;
+        this.activity = activity;
     }
 
 
@@ -42,12 +52,46 @@ public class FoodAdapter extends RecyclerView.Adapter<MyViewHolder> {
         final Food myObject = foodlist.get(position);
         //holder.bind(myObject);
         holder.foodtitel.setText(myObject.getTitle());
-        holder.foodcalories.setText(myObject.getCalories());
-        holder.foodunite.setText(myObject.getUnite());
+        holder.foodcalories.setText(myObject.getCalories()+"Cal");
+        holder.foodunite.setText("Unite: "+myObject.getUnite());
         Picasso.with(context).load(myObject.getImage()).fit().centerInside().into(holder.imageView);
         holder.addfood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+                LayoutInflater inflater = activity.getLayoutInflater();
+                View mview=  inflater.inflate(R.layout.addfood_layout,null);
+
+                /******************************************************************/
+
+                final EditText foodval=mview.findViewById(R.id.food_newVal);
+                Button confirme=mview.findViewById(R.id.btnaddfoddlocal);
+                Button cancel=mview.findViewById(R.id.btnCancelloCal);
+                TextView TitreFood=mview.findViewById(R.id.TitreFood);
+                TextView Unite=mview.findViewById(R.id.Unite_Add);
+                /********************************************************************/
+
+                TitreFood.setText(myObject.getTitle());
+                Unite.setText("Unite : "+myObject.getCalories()+" cal/"+ myObject.getUnite());
+
+
+                confirme.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                });
+                cancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        alertDialog.cancel();
+                    }
+                });
+
+                builder.setView(mview);
+                builder.setCancelable(false);
+                alertDialog=builder.create();
+                alertDialog.show();
                 Toast.makeText(context,myObject.getTitle(),Toast.LENGTH_LONG).show();
             }
         });

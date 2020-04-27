@@ -18,9 +18,9 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
+
+import com.android.volley.error.VolleyError;
+import com.android.volley.request.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.healthy.Adapters.FoodAdapter;
 import com.example.healthy.Classes.Food;
@@ -53,6 +53,7 @@ MaterialSearchBar  searchBar;
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                Toast.makeText(getApplicationContext(),charSequence,Toast.LENGTH_LONG).show();
                 ListeDesFoods(charSequence.toString());
             }
 
@@ -70,37 +71,32 @@ MaterialSearchBar  searchBar;
 
     void  ListeDesFoods(String text)
     {
-        String JSON_URL = "https://api.spoonacular.com/food/products/search?apiKey=ca329df47b10418eb01bfcc6439c4e7a&query="+text;
+        String JSON_URL = "http://92.222.83.184:9999/api/Food?mot"+text;
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
-        JsonObjectRequest jsonArrayRequest = new JsonObjectRequest(Request.Method.GET,JSON_URL,null, new Response.Listener<JSONObject>() {
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest (JSON_URL, new Response.Listener<JSONArray>() {
             @Override
-            public void onResponse(JSONObject response) {
+            public void onResponse(JSONArray response) {
                 final ArrayList<Food> foods = new ArrayList<>();
                 // Toast.makeText(Liste_Des_Doctors.this,adress,Toast.LENGTH_LONG).show();
-                // for (int i = 0; i < response.length(); i++) {
+                 for (int i = 0; i < response.length(); i++) {
 
-                //JSONObject jsonObject = response.getJSONObject(i);
+                     try {
+                         JSONObject jsonObject = response.getJSONObject(i);
+                         Food food = new Food();
+                         food.setId(Integer.parseInt(jsonObject.getString("ID")));
+                         food.setTitle(jsonObject.getString("Titre"));
+                         food.setUnite(jsonObject.getString("QT_Par_Unite")+"/"+jsonObject.getString("Titre_Unite"));
+                         food.setCalories(jsonObject.getString("Calories"));
+                         food.setImage("http://92.222.83.184:9999" + jsonObject.getString("Image"));
+                         foods.add(food);
+                         Log.e("tableChar",foods.toString());
+                     } catch (JSONException e) {
+                         e.printStackTrace();
+                     }
+                 }
+                     //  food.setId(Integer.parseInt(jsonObject.getString("id")));
 
-                //  food.setId(Integer.parseInt(jsonObject.getString("id")));
-                try {
-                    JSONArray array = response.getJSONArray("products");
-                    for(int i=0;i<array.length();i++){
-                        // Get current json object
-                        Food food = new Food();
-                        JSONObject student = array.getJSONObject(i);
-                        food.setId(Integer.parseInt(student.getString("id")));
-                        food.setTitle(student.getString("title"));
-                        food.setImage(student.getString("image"));
-                        // Get the current student (json object) data
-
-                        // Display the formatted json data in text view
-                        foods.add(food);
-                    }
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
                 //  food.setCalories(jsonObject.getJSONObject("nutrition").getJSONObject("caloricBreakdown").getString("percentProtein"));
                 //food.setUnite(jsonObject.getString("serving_size"));
                 //  food.setImage(jsonObject.getJSONArray("images").get(0).toString());
@@ -109,7 +105,7 @@ MaterialSearchBar  searchBar;
                 //  }
 
                 //    Log.e("Dec", String.valueOf(foods.size()));
-                recyclerView.setAdapter(new FoodAdapter(getApplicationContext(), foods));
+                recyclerView.setAdapter(new FoodAdapter(getApplicationContext(), foods,addFood.this));
 
                 recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
                     GestureDetector gestureDetector = new GestureDetector(addFood.this, new GestureDetector.SimpleOnGestureListener() {
@@ -123,11 +119,11 @@ MaterialSearchBar  searchBar;
                     public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent motionEvent) {
                         View child = rv.findChildViewUnder(motionEvent.getX(), motionEvent.getY());
                         if (child != null && gestureDetector.onTouchEvent(motionEvent)) {
-                            int position = rv.getChildLayoutPosition(child);
+                          /*  int position = rv.getChildLayoutPosition(child);
                             Food food = foods.get(position);
                             Intent myIntent = new Intent(addFood.this, InformationFood.class);
                             myIntent.putExtra("Food", food);
-                            startActivity(myIntent);
+                            startActivity(myIntent);*/
 
                         }
                         return false;
