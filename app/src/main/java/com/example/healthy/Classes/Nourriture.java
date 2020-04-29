@@ -4,6 +4,16 @@ public class Nourriture {
     int id;
     String nom ;
     String type ;
+
+    public String getImageUrl() {
+        return ImageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        ImageUrl = imageUrl;
+    }
+
+    String ImageUrl ;
     int calories ;
     float graisse ; //g
     float Cholesterol ; //mg
@@ -17,6 +27,15 @@ public class Nourriture {
     String typePortion;
     String quantitéParPortion;
 
+    public String getDate() {
+        return Date;
+    }
+
+    public void setDate(String date) {
+        Date = date;
+    }
+
+    String Date;
     public Nourriture(int id, String nom, String type, int calories, float graisse, float cholesterol, float sodium, float sucres, float protein, float vitaminA, float vitaminC, float fer, float calcium, String typePortion, String quantitéParPortion) {
         this.id = id;
         this.nom = nom;
@@ -54,12 +73,14 @@ public class Nourriture {
     }
 
 
-    public Nourriture(String nom, String type, int calories, String typePortion, String quantitéParPortion) {
+    public Nourriture(String nom, int calories, String typePortion, String quantitéParPortion,String Date,String Image) {
         this.nom = nom;
-        this.type = type;
+        this.type = "";
         this.calories = calories;
         this.typePortion = typePortion;
+this.ImageUrl=Image;
         this.quantitéParPortion = quantitéParPortion;
+        this.Date=Date;
         this.graisse = 0 ;
         this.Cholesterol = 0 ;
         this.Sodium = 0 ;

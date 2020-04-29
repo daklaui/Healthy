@@ -5,9 +5,18 @@ import java.io.Serializable;
 public class Food implements Serializable {
     private int id;
     private String title;
-    private String calories;
+    private int calories;
 private String unite;
 
+    public String getQnparUnite() {
+        return QnparUnite;
+    }
+
+    public void setQnparUnite(String qnparUnite) {
+        QnparUnite = qnparUnite;
+    }
+
+    private String QnparUnite;
     public Food() {
     }
 
@@ -19,14 +28,13 @@ private String unite;
         this.unite = unite;
     }
 
-    public Food(int id, String title, String calories, String carbs, String fat, String protein, String image) {
-        this.id = id;
+    public Food(String title, int calories, String unite, String qnparUnite, String date, String image) {
         this.title = title;
         this.calories = calories;
-        this.carbs = carbs;
-        this.fat = fat;
-        this.protein = protein;
+        this.unite = unite;
+        QnparUnite = qnparUnite;
         this.image = image;
+        Date = date;
     }
 
     private String carbs;
@@ -34,6 +42,15 @@ private String unite;
     private String protein;
     private String image;
 
+    public String getDate() {
+        return Date;
+    }
+
+    public void setDate(String date) {
+        Date = date;
+    }
+
+    private String Date;
     public int getId() {
         return id;
     }
@@ -50,11 +67,11 @@ private String unite;
         this.title = title;
     }
 
-    public String getCalories() {
+    public int  getCalories() {
         return calories;
     }
 
-    public void setCalories(String calories) {
+    public void setCalories(int  calories) {
         this.calories = calories;
     }
 

@@ -180,16 +180,95 @@
                 app:met_floatingLabel="highlight"
                 app:met_primaryColor="#757575" />
 
+            <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/Fibres"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:hint="Fibres"
+            android:inputType="number|numberDecimal"
+            android:textColorHint="@color/gen_black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/FerFood"
+            app:met_baseColor="#212121"
+            app:met_clearButton="true"
+            app:met_errorColor="#F44336"
+            app:met_floatingLabel="highlight"
+            app:met_primaryColor="#757575" />
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/Graisse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:hint="Graisse"
+                android:inputType="number|numberDecimal"
+                android:textColorHint="@color/gen_black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Fibres"
+                app:met_baseColor="#212121"
+                app:met_clearButton="true"
+                app:met_errorColor="#F44336"
+                app:met_floatingLabel="highlight"
+                app:met_primaryColor="#757575" />
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/SODIUM"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:hint="SODIUM"
+                android:inputType="number|numberDecimal"
+                android:textColorHint="@color/gen_black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Graisse"
+                app:met_baseColor="#212121"
+                app:met_clearButton="true"
+                app:met_errorColor="#F44336"
+                app:met_floatingLabel="highlight"
+                app:met_primaryColor="#757575" />
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/Sucres"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:hint="Sucres"
+                android:inputType="number|numberDecimal"
+                android:textColorHint="@color/gen_black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/SODIUM"
+                app:met_baseColor="#212121"
+                app:met_clearButton="true"
+                app:met_errorColor="#F44336"
+                app:met_floatingLabel="highlight"
+                app:met_primaryColor="#757575" />
+
             <Button
                 android:id="@+id/uploade"
+                style="@style/AppTheme.RoundedCornerMaterialButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                android:text="Button"
+                android:text="Ajouter"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/FerFood" />
+                app:layout_constraintTop_toBottomOf="@+id/Sucres" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

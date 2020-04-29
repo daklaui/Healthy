@@ -68,12 +68,11 @@ import okhttp3.Response;
 
 public class CreateFood extends AppCompatActivity {
 ImageView imageView;
-EditText TitreNewFoo,CaloriesFood,ProteinesFood,GlucidesFood,CalciumFood,FerFood;
+EditText TitreNewFoo,CaloriesFood,ProteinesFood,GlucidesFood,CalciumFood,FerFood,Graisse,Sodium,Fibres,Sucres;
     Uri uri;
     Button uploade;
-Bitmap bitmap;
-String path;
-    public static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 123;
+    LoadingDialog loadingDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,15 +92,17 @@ String path;
 
                 }).check();
 
-
+        loadingDialog=new LoadingDialog(this);
         TitreNewFoo=findViewById(R.id.TitreNewFoo);
         CaloriesFood=findViewById(R.id.CaloriesFood);
         ProteinesFood=findViewById(R.id.ProteinesFood);
         GlucidesFood=findViewById(R.id.GlucidesFood);
         CalciumFood=findViewById(R.id.CalciumFood);
         FerFood=findViewById(R.id.FerFood);
-
-
+        Graisse=findViewById(R.id.Graisse);
+        Sodium=findViewById(R.id.SODIUM);
+        Fibres=findViewById(R.id.Fibres);
+        Sucres=findViewById(R.id.Sucres);
         uploade=findViewById(R.id.uploade);
 
         imageView = findViewById(R.id.AddImageFood);
@@ -212,89 +213,10 @@ String path;
           }
       }
   }
-   /* public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 && resultCode==RESULT_OK&&data!=null) {
-            uri = null;
-            if (data != null) {
-                uri = data.getData();
-                Log.i("testmoataz", "Uri: " + uri.toString());
-                imageView.setImageURI(uri);
-           //     upload.setVisibility(View.VISIBLE);
-            }
-            else
-            {
-                Log.i("testmoataz", "Uri: " + uri.toString());
-
-            }
-             /*   RequestQueue requestQueue = Volley.newRequestQueue(this);
-
-
-                SimpleMultiPartRequest smr = new SimpleMultiPartRequest(Request.Method.POST, "http://92.222.83.184:9999/api/FileUploading/UploadFile", new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-
-                        Toast.makeText(CreateFood.this,response,Toast.LENGTH_LONG).show();
-                        Log.e("vollyprob",response);
-
-                    }
-                },new Response.ErrorListener()
-                {
-
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-
-                    }
-
-                }
-                )
-                {
-
-                    @Override
-                    public Map<String, String> getHeaders() throws AuthFailureError {
-                        HashMap<String, String> headers = new HashMap<String, String>();
-                        headers.put("Accept", "application/json");
-                        headers.put("Accept-Encoding", "gzip,deflate");
-                        headers.put("Content-Disposition", "form-data; name=Foo");
-                        headers.put("enctype", "multipart/form-data");
-                        return headers;
-                    }
-
-                };
-
-                Log.e("dd", path);
-                smr.addFile("image", path);
-
-                requestQueue.add(smr);
-*/
-
-              /*  OkHttpClient client = new OkHttpClient();
-                RequestBody body = new MultipartBody.Builder()
-                                  .setType(MultipartBody.FORM)
-                                  .addFormDataPart("image",file.getName(),RequestBody.create(MediaType.parse("image/*"),file)).build();
-
-                Request request = new Request.Builder().url("http://92.222.83.184:9999/api/FileUploading/UploadFile").post(body).build();
-
-                try {
-                    Response response = client.newCall(request).execute();
-                    Log.e("testmoataz",response.body().string());
-                }
-                catch (IOException e)
-                {     Log.e("testmoataz",e.toString());
-                    e.printStackTrace();
-                }
-
-
-
-
-            //TODO: action
-        }
-    }
-*/
 
 
     public void uploadImage(){
-
+        loadingDialog.startLoadingDialog();
         if(uri == null){
             return;
         }
@@ -315,6 +237,10 @@ String path;
             object.put("Calcium",CalciumFood.getText().toString());
             object.put("Fer",FerFood.getText().toString());
             object.put("Calories",CaloriesFood.getText().toString());
+            object.put("Graisse",Graisse.getText().toString());
+            object.put("Sodium",Sodium.getText().toString());
+            object.put("Fibres",Fibres.getText().toString());
+            object.put("Sucres",Sucres.getText().toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -341,8 +267,8 @@ String path;
             @Override
             public void onFailure(Call call, IOException e) {
                 String mMessage = e.getMessage().toString();
-                //Toast.makeText(ChatScreen.this, "Error uploading file", Toast.LENGTH_LONG).show();
-
+               Toast.makeText(CreateFood.this, "Error uploading file", Toast.LENGTH_LONG).show();
+                loadingDialog.fermer();
                 Log.e("failure Response", mMessage);
             }
 
@@ -364,20 +290,6 @@ String path;
     }
 
 
-/*
-*
-*         public int ID { get; set; }
-        public string Titre { get; set; }
-        public string Image { get; set; }
-        public string Protéines { get; set; }
-        public string Glucides { get; set; }
-        public string Calcium { get; set; }
-        public string Fer { get; set; }
-        public string Calories { get; set; }
-        public Nullable<int> Id_Unite { get; set; }
-        public Nullable<bool> Valide_Food { get; set; }
-        public Nullable<int> QT_Par_Unite { get; set; }
-* */
 
 
 private  void SendData(JSONObject jsonObject)
@@ -390,12 +302,14 @@ private  void SendData(JSONObject jsonObject)
                 public void onResponse(JSONObject response) {
                   //  resultTextView.setText("String Response : "+ response.toString());
 
-                    Toast.makeText(CreateFood.this,"test",Toast.LENGTH_LONG).show();
-
+                    Toast.makeText(CreateFood.this,response.toString(),Toast.LENGTH_LONG).show();
+                    loadingDialog.fermer();
                 }
             },new com.android.volley.Response.ErrorListener() {
         @Override
         public void onErrorResponse(VolleyError error) {
+            Toast.makeText(CreateFood.this,error.getMessage(),Toast.LENGTH_LONG).show();
+            loadingDialog.fermer();
            // resultTextView.setText("Error getting response");
         }
     });

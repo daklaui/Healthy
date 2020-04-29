@@ -3,6 +3,8 @@ package com.example.healthy.Adapters;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,12 +20,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.healthy.Classes.Food;
+import com.example.healthy.Classes.Nourriture;
 import com.example.healthy.Creation_Profile;
+import com.example.healthy.Database.DatabaseHandler;
+import com.example.healthy.ListeOfFood;
 import com.example.healthy.LoadingDialog;
 import com.example.healthy.R;
 import com.example.healthy.addFood;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONObject;
+
+import java.util.Calendar;
 import java.util.List;
 
 public class FoodAdapter extends RecyclerView.Adapter<MyViewHolder> {
@@ -32,6 +40,7 @@ public class FoodAdapter extends RecyclerView.Adapter<MyViewHolder> {
     private List<Food> foodlist;
     Activity activity;
     AlertDialog alertDialog;
+
     public FoodAdapter(Context context, List<Food> foodlist,Activity activity) {
         super();
         this.context = context;
@@ -58,6 +67,7 @@ public class FoodAdapter extends RecyclerView.Adapter<MyViewHolder> {
         holder.addfood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final DatabaseHandler databaseHandler=new DatabaseHandler(activity);
                 AlertDialog.Builder builder = new AlertDialog.Builder(activity);
                 LayoutInflater inflater = activity.getLayoutInflater();
                 View mview=  inflater.inflate(R.layout.addfood_layout,null);
@@ -78,6 +88,26 @@ public class FoodAdapter extends RecyclerView.Adapter<MyViewHolder> {
                 confirme.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        final double Quntité=Integer.parseInt(foodval.getText().toString());
+                        Food food = new Food();
+                        int nomberdecalories = 0;
+                        Log.e("TableMoataz", myObject.getQnparUnite()+"/"+myObject.getCalories()+"/"+Quntité);
+                        switch(myObject.getUnite())
+                        {
+                            case "g" : nomberdecalories=(int)Math.round(Quntité*(myObject.getCalories()/Double.parseDouble(myObject.getQnparUnite())));break;
+                            default:nomberdecalories=(int)Math.round(Quntité*myObject.getCalories());
+                        }
+
+                        food.setCalories(nomberdecalories);
+                        food.setTitle(myObject.getTitle());
+                        food.setUnite(myObject.getUnite());
+                        food.setQnparUnite(String.valueOf(Quntité));
+                        food.setImage(myObject.getImage());
+                        food.setDate(getDay());
+
+                        databaseHandler.addFood(food);
+                       Intent intent = new Intent(activity, ListeOfFood.class);
+                      activity.startActivity(intent);
 
                     }
                 });
@@ -92,9 +122,38 @@ public class FoodAdapter extends RecyclerView.Adapter<MyViewHolder> {
                 builder.setCancelable(false);
                 alertDialog=builder.create();
                 alertDialog.show();
-                Toast.makeText(context,myObject.getTitle(),Toast.LENGTH_LONG).show();
+
             }
         });
+    }
+
+    private String getDay() {
+        Calendar calendar = Calendar.getInstance();
+        final int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        month=month+1;
+        String day_1="";
+        String Month_1="";
+        if(day<10)
+        {
+            day_1="0"+day;
+
+        }
+        else
+        {
+            day_1=String.valueOf(day);
+        }
+        if(month<10)
+        {
+            Month_1="0"+month;
+        }
+        else
+        {
+            Month_1=String.valueOf(month);
+        }
+        return day_1+"-"+Month_1+"-"+year;
     }
 
     @Override
@@ -155,4 +214,6 @@ public class FoodAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
         // Picasso.with(imageView.getContext()).load(myObject.getImageUrl()).centerCrop().fit().into(imageView);
     }
+
+
 }

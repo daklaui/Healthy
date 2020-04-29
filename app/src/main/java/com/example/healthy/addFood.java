@@ -86,8 +86,9 @@ MaterialSearchBar  searchBar;
                          Food food = new Food();
                          food.setId(Integer.parseInt(jsonObject.getString("ID")));
                          food.setTitle(jsonObject.getString("Titre"));
-                         food.setUnite(jsonObject.getString("QT_Par_Unite")+"/"+jsonObject.getString("Titre_Unite"));
-                         food.setCalories(jsonObject.getString("Calories"));
+                         food.setQnparUnite(jsonObject.getString("QT_Par_Unite"));
+                         food.setUnite(jsonObject.getString("Titre_Unite"));
+                         food.setCalories(Integer.parseInt(jsonObject.getString("Calories")));
                          food.setImage("http://92.222.83.184:9999" + jsonObject.getString("Image"));
                          foods.add(food);
                          Log.e("tableChar",foods.toString());
@@ -95,16 +96,7 @@ MaterialSearchBar  searchBar;
                          e.printStackTrace();
                      }
                  }
-                     //  food.setId(Integer.parseInt(jsonObject.getString("id")));
 
-                //  food.setCalories(jsonObject.getJSONObject("nutrition").getJSONObject("caloricBreakdown").getString("percentProtein"));
-                //food.setUnite(jsonObject.getString("serving_size"));
-                //  food.setImage(jsonObject.getJSONArray("images").get(0).toString());
-
-
-                //  }
-
-                //    Log.e("Dec", String.valueOf(foods.size()));
                 recyclerView.setAdapter(new FoodAdapter(getApplicationContext(), foods,addFood.this));
 
                 recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {

@@ -8,7 +8,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.healthy.Classes.Account;
 import com.example.healthy.Classes.Diet;
+import com.example.healthy.Classes.Food;
 import com.example.healthy.Classes.Historique_Regime;
+import com.example.healthy.Classes.Nourriture;
 import com.example.healthy.Classes.Profile;
 import com.example.healthy.Classes.Regime;
 
@@ -60,7 +62,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String DAILY_FOOD_ID = "id";
     private static final String DAILY_FOOD_ID_PUBLIC = "id_Api";
     private static final String DAILY_FOOD_TITRE  = "titre";
+    private static final String DAILY_FOOD_UNITE  = "unite";
     private static final String DAILY_FOOD_CALORIES  = "Nb_Calories";
+    private static final String DAILY_FOOD_QUNTITE  = "Quntite";
     private static final String DAILY_FOOD_CARBS  = "Nb_Carbs";
     private static final String DAILY_FOOD_PROTIEN  = "Nb_Protien";
     private static final String DAILY_FOOD_IMAGE  = "ImageUrl";
@@ -98,7 +102,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         String CREATE_DAILY_FOOD = "CREATE TABLE " + DAILY_FOOD + "("
                 + DAILY_FOOD_ID + " INTEGER  PRIMARY KEY AUTOINCREMENT ," + DAILY_FOOD_ID_PUBLIC + " INTEGER,"
                 + DAILY_FOOD_TITRE+ " TEXT,"+ DAILY_FOOD_CALORIES+ " TEXT,"+ DAILY_FOOD_CARBS +" TEXT,"
-                + DAILY_FOOD_PROTIEN+ " TEXT,"+ DAILY_FOOD_IMAGE + " TEXT,"+DAILY_FOOD_FAT+" TEXT,"+
+                + DAILY_FOOD_PROTIEN+ " TEXT,"+ DAILY_FOOD_IMAGE + " TEXT,"+ DAILY_FOOD_UNITE + " TEXT,"+DAILY_FOOD_QUNTITE + " DOUBLE,"+DAILY_FOOD_FAT+" TEXT,"+
                 DAILY_FOOD_DATE+" TEXT,"+DAILY_FOOD_TYPE+" TEXT" + ")";
 
 
@@ -319,6 +323,40 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 
         return Historique_Regime;
+    }
+
+
+    //Historique_Regime
+    public void addFood(Food regime) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(DAILY_FOOD_TITRE, regime.getTitle());
+        values.put(DAILY_FOOD_UNITE, regime.getUnite());
+        values.put(DAILY_FOOD_CALORIES, regime.getCalories());
+        values.put(DAILY_FOOD_QUNTITE, regime.getQnparUnite());
+        values.put(DAILY_FOOD_DATE, regime.getDate());
+        values.put(DAILY_FOOD_IMAGE, regime.getImage());
+        db.insert(DAILY_FOOD, null, values);
+        db.close();
+    }
+    public List<Food> getListeNourriture() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        List<Food> Nourriture= new ArrayList<>();
+        Cursor cursor = db.query(DAILY_FOOD, new String[] { DAILY_FOOD_TITRE ,
+                        DAILY_FOOD_UNITE ,DAILY_FOOD_CALORIES,DAILY_FOOD_DATE, DAILY_FOOD_QUNTITE,DAILY_FOOD_IMAGE},null,
+                null, null, null, null);
+        if (cursor != null)
+            if(cursor.moveToFirst())
+            {
+                do{
+                    Food nourriture = new Food(cursor.getString(0),Integer.parseInt(cursor.getString(2)),cursor.getString(1),cursor.getString(4),cursor.getString(3),cursor.getString(5));
+                    Nourriture.add(nourriture);
+                }while (cursor.moveToNext());
+            }
+
+
+
+        return Nourriture;
     }
 
 }

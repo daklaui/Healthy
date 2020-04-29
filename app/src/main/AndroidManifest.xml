@@ -3,9 +3,9 @@
     package="com.example.healthy">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activities.DiaryActivity"></activity>
+        <activity android:name=".ListeOfFood"></activity>
+        <activity android:name=".Activities.DiaryActivity" />
         <activity android:name=".InformationFood" />
         <activity
             android:name=".MainActivity"
@@ -34,12 +35,13 @@
         <activity android:name=".Activities.CreateProfileStep2Activity" />
         <activity android:name=".Creation_Profile" />
         <activity android:name=".Activities.CreateProfileStep1Activity" />
-        <activity android:name=".addFood"></activity>
+        <activity android:name=".addFood" />
         <activity android:name=".Activities.RegisterActivity" />
         <activity android:name=".CreateFood">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
