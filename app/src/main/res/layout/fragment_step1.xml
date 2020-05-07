@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     tools:context=".Fragments_Profile.Step1">
 
 
@@ -27,63 +28,67 @@
                 android:layout_marginBottom="35dp"
                 android:fontFamily="sans-serif-light"
                 android:padding="5dp"
-                android:text="Information de compte"
+                android:text="@string/register_compte"
                 android:textAlignment="center"
-                android:textColor="#212121"
-                android:textSize="24sp"
+                android:textColor="@color/lightPrimaryColor"
+                android:textSize="36sp"
                 android:textStyle="bold"
                 android:typeface="monospace" />
 
-            <TextView
-                android:visibility="gone"
-                android:id="@+id/Etape1"
+            <com.github.florent37.materialtextfield.MaterialTextField
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:text="TextView"
-                android:textAlignment="textEnd"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                app:mtf_cardCollapsedHeight="1dp"
+                app:mtf_image="@drawable/email"
+                app:mtf_labelColor="@color/colorAccent2">
 
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Enter Email"
-                android:inputType="textEmailAddress"
-                android:textColorHint="@color/gen_black"
-                app:met_baseColor="#212121"
-                app:met_clearButton="true"
-                app:met_errorColor="#F44336"
-                app:met_floatingLabel="highlight"
-                app:met_primaryColor="#757575" />
+                <EditText
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/login_email"
+                    android:textColor="#34495e" />
 
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/password"
+            </com.github.florent37.materialtextfield.MaterialTextField>
+
+
+            <com.github.florent37.materialtextfield.MaterialTextField
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter Password"
+                app:mtf_cardCollapsedHeight="1dp"
+                app:mtf_image="@drawable/password"
                 android:inputType="textPassword"
-                android:textColorHint="@color/gen_black"
-                app:met_baseColor="#212121"
-                app:met_clearButton="true"
-                app:met_errorColor="#F44336"
-                app:met_floatingLabel="highlight"
-                app:met_primaryColor="#757575" />
+                app:mtf_labelColor="@color/colorAccent2">
+
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/login_password"
+                    android:inputType="textPassword"
+                    android:textColor="#34495e" />
+
+            </com.github.florent37.materialtextfield.MaterialTextField>
 
 
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/confirmpassword"
+
+            <com.github.florent37.materialtextfield.MaterialTextField
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Reenter Password"
-                android:inputType="textPassword"
-                android:textColorHint="@color/gen_black"
-                app:met_baseColor="#212121"
-                app:met_clearButton="true"
-                app:met_errorColor="#F44336"
-                app:met_floatingLabel="highlight"
-                app:met_primaryColor="#757575" />
+                app:mtf_cardCollapsedHeight="1dp"
+                app:mtf_image="@drawable/password"
+                app:mtf_labelColor="@color/colorAccent2">
+
+                <EditText
+                    android:id="@+id/confirmpassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/register_reenter_password"
+                    android:inputType="textPassword"
+                    android:textColor="#34495e" />
+
+            </com.github.florent37.materialtextfield.MaterialTextField>
+
 
 
         </LinearLayout>

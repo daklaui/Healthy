@@ -27,7 +27,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:orientation="horizontal">
+        android:layout_gravity="center"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal"
+       >
 
         <Button
             android:id="@+id/btnSkip"
@@ -37,13 +40,16 @@
             android:layout_marginLeft="5dp"
             android:layout_marginTop="15dp"
             android:layout_marginRight="10dp"
+
+            android:gravity="center"
             android:onClick="previous_fragment"
-            android:text="précédent"
+            android:text="Précédent"
             android:textColor="#FFFFFF" />
 
         <Button
             android:id="@+id/btnNext"
             style="@style/AppTheme.RoundedCornerMaterialButton"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
@@ -52,7 +58,7 @@
             android:layout_marginRight="30dp"
             android:layout_marginBottom="0dp"
             android:onClick="next_fragment"
-            android:text="suivant"
+            android:text="Suivant"
             android:textColor="#FFFFFF" />
 
         <Button

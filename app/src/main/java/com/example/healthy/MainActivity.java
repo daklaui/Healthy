@@ -41,14 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean isConnected() {
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
        // Toast.makeText(MainActivity.this,sharedpreferences.getString("Inscription",""),Toast.LENGTH_LONG).show();
-        if(sharedpreferences.getString("Inscription","")=="" )
-        {
-            return  true;
-        }
-        else
-        {
-            return false;
-        }
+        return sharedpreferences.getString("Inscription", "") == "";
     }
 
     private void openMainActivity() {

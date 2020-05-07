@@ -165,7 +165,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public Boolean checkEmail()
     {
-        EditText emailValidate = (EditText)findViewById(R.id.InputLoginEmail);
+        EditText emailValidate = findViewById(R.id.InputLoginEmail);
         String email = emailValidate.getText().toString().trim();
         String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 

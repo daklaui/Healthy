@@ -12,6 +12,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
             android:orientation="vertical" >
 
             <LinearLayout
@@ -21,23 +22,22 @@
 
                 <TextView
                     android:id="@+id/textView9"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:fontFamily="sans-serif-smallcaps"
+                    android:gravity="center"
                     android:padding="10dp"
-                    android:text="Indice de Masse Corporelle (IMC)  : "
-                    android:textAlignment="textStart"
-                    android:textColor="#212121"
-                    android:textSize="18sp"
-                    android:textStyle="bold"  />
+                    android:text="@string/IMC"
+                    android:textAlignment="center"
+                    android:textColor="@color/lightPrimaryColor"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
                 <com.github.anastr.speedviewlib.SpeedView
                     android:id="@+id/speedView"
                     android:layout_width="wrap_content"
                     android:layout_height="308dp"
                     android:layout_gravity="center"
-
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="20dp"
@@ -60,10 +60,10 @@
                     android:fontFamily="sans-serif-smallcaps"
                     android:padding="10dp"
                     android:text="Recommandation : "
-                    android:textAlignment="textStart"
-                    android:textColor="#212121"
+                    android:textAlignment="center"
+                    android:textColor="@color/primarytext"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="italic" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -118,6 +118,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
+                        android:background="@color/colorText"
                         android:layout_marginRight="10dp">
 
                         <LinearLayout
@@ -156,6 +157,7 @@
                         android:id="@+id/prop3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@color/colorText"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginRight="10dp">
@@ -171,6 +173,7 @@
                                 android:layout_gravity="center_horizontal"
                                 android:layout_marginLeft="10dp"
                                 android:layout_marginRight="10dp"
+
                                 android:layout_weight="1"
                                 android:padding="7dp"
                                 android:text=" Surpoids"

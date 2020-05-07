@@ -167,12 +167,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("select * from "+TABLE_ACCOUNT+" where "+KEY_EMAIL+"= '"+email+"' and "+KEY_PASSWORD+"= '"+pass+"' ;",null);
-        if(cursor.getCount()>0)
-        {
-            return true;
-        }
-        else
-            return false;
+        return cursor.getCount() > 0;
     }
 
 
@@ -180,12 +175,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("select * from "+TABLE_ACCOUNT+" where "+KEY_EMAIL+" = '"+email+"';",null);
-        if(cursor.getCount()>0)
-        {
-            return true;
-        }
-        else
-            return false;
+        return cursor.getCount() > 0;
     }
 
     //PROFILE METHODS

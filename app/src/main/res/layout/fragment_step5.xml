@@ -7,6 +7,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+
         android:padding="20dp">
 
         <LinearLayout
@@ -19,11 +21,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:padding="20dp"
-                android:text="Quel est votre degré d'activité ?"
-                android:textColor="@color/gen_black"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:fontFamily="sans-serif-light"
+                android:text="@string/degré"
+                android:textAlignment="center"
+                android:textColor="@color/lightPrimaryColor"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                android:typeface="monospace" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -36,8 +40,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Pas trés actif"
-                    android:textAlignment="center" />
+                    android:text="@string/degré_1"
+                    android:textAlignment="center"
+                    android:textColor="@color/gen_black"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/textView5"
@@ -48,9 +54,11 @@
                     android:layout_weight="1"
                     android:paddingLeft="28dp"
                     android:paddingRight="10dp"
-                    android:text="Vous passez la majeur partie de la journée en position assise"
-                    android:textAlignment="textStart"
-                    android:textSize="14dp" />
+                    android:text="@string/degré_1_a"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/lightPrimaryColor"
+                    android:textSize="14sp"
+                    android:textStyle="italic" />
             </LinearLayout>
 
             <LinearLayout
@@ -65,7 +73,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:checked="true"
-                    android:text="Modérément actif"
+                    android:text="@string/degré_2"
+                    android:textColor="@color/gen_black"
+                    android:textSize="18sp"
                     android:textAlignment="center" />
 
                 <TextView
@@ -77,9 +87,11 @@
                     android:layout_weight="1"
                     android:paddingLeft="28dp"
                     android:paddingRight="10dp"
-                    android:text="Vous passez une bonne partie de la journée debout"
-                    android:textAlignment="textStart"
-                    android:textSize="14dp" />
+                    android:text="@string/degré_2_a"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/lightPrimaryColor"
+                    android:textSize="14sp"
+                    android:textStyle="italic" />
             </LinearLayout>
 
             <LinearLayout
@@ -93,7 +105,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Actif"
+                    android:text="@string/degré_3"
+                    android:textColor="@color/gen_black"
+                    android:textSize="18sp"
                     android:textAlignment="center" />
 
                 <TextView
@@ -105,9 +119,11 @@
                     android:layout_weight="1"
                     android:paddingLeft="28dp"
                     android:paddingRight="10dp"
-                    android:text="Vous passez une bonne partie de la journée a faire des activités physiques"
-                    android:textAlignment="textStart"
-                    android:textSize="14dp" />
+                    android:text="@string/degré_3_a"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/lightPrimaryColor"
+                    android:textSize="14sp"
+                    android:textStyle="italic" />
             </LinearLayout>
 
             <LinearLayout
@@ -121,7 +137,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Trés actif"
+                    android:text="@string/degré_4"
+                    android:textColor="@color/gen_black"
+                    android:textSize="18sp"
                     android:textAlignment="center" />
 
                 <TextView
@@ -133,9 +151,11 @@
                     android:layout_weight="1"
                     android:paddingLeft="28dp"
                     android:paddingRight="10dp"
-                    android:text="Vous passez la majeure partie de la journée a faire des activités trés physiques"
-                    android:textAlignment="textStart"
-                    android:textSize="14dp" />
+                    android:text="@string/degré_4_a"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/lightPrimaryColor"
+                    android:textSize="14sp"
+                    android:textStyle="italic" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

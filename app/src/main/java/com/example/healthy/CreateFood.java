@@ -266,7 +266,7 @@ EditText TitreNewFoo,CaloriesFood,ProteinesFood,GlucidesFood,CalciumFood,FerFood
         imageUploadClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                String mMessage = e.getMessage().toString();
+                String mMessage = e.getMessage();
                Toast.makeText(CreateFood.this, "Error uploading file", Toast.LENGTH_LONG).show();
                 loadingDialog.fermer();
                 Log.e("failure Response", mMessage);

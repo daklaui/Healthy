@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimary"
     tools:context=".Fragments_Profile.Step3">
 
     <ScrollView
@@ -16,18 +18,29 @@
             android:padding="20dp">
 
             <TextView
-                android:id="@+id/t"
+                android:id="@+id/Etape2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/create_profile_etape2"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:textStyle="bold|italic" />
+
+            <TextView
+                android:id="@+id/textviewDétailsProfil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="35dp"
                 android:fontFamily="sans-serif-light"
                 android:padding="5dp"
-                android:text="Des informations personel Etape2/2"
+                android:text="@string/create_profile"
                 android:textAlignment="center"
-                android:textColor="#212121"
-                android:textSize="24sp"
+                android:textColor="@color/lightPrimaryColor"
+                android:textSize="36sp"
                 android:textStyle="bold"
                 android:typeface="monospace" />
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -37,40 +50,34 @@
                 android:orientation="vertical"
                 android:padding="10dp">
 
-                <TextView
-                    android:id="@+id/TextStep2Poids"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-smallcaps"
-                    android:text="Poids : "
-                    android:textAlignment="textStart"
-                    android:textAllCaps="false"
-                    android:textColor="#212121"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:gravity="center"
                     android:orientation="horizontal">
 
-                    <EditText
+                    <com.rengwuxian.materialedittext.MaterialEditText
                         android:id="@+id/Poids_perder"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-
-                        android:ems="10"
+                        android:hint="@string/create_profile_poids"
                         android:inputType="number"
+                        android:maxLines="1"
                         android:maxLength="3"
-                        android:textAlignment="center"
-                        android:textColor="#212121" />
+                        android:gravity="center"
+                        android:textColorHint="@color/gen_black"
+                        app:met_baseColor="@color/colorText"
+                        app:met_clearButton="true"
+                        app:met_errorColor="#F44336"
+                        app:met_floatingLabel="highlight"
+                        app:met_primaryColor="@color/colorAccent" />
 
                     <TextView
                         android:id="@+id/Mail_Profile"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20dp"
                         android:fontFamily="sans-serif-smallcaps"
                         android:text="kilogramme"
                         android:textColor="#212121"
@@ -88,39 +95,34 @@
                 android:orientation="vertical"
                 android:padding="10dp">
 
-                <TextView
-                    android:id="@+id/TextStep2Taille"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-smallcaps"
-                    android:text="Taille : "
-                    android:textAlignment="textStart"
-                    android:textAllCaps="false"
-                    android:textColor="#212121"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:gravity="center"
                     android:orientation="horizontal">
 
-                    <EditText
+                    <com.rengwuxian.materialedittext.MaterialEditText
                         android:id="@+id/InputStep2Taille"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:ems="10"
+                        android:hint="@string/create_profile_taille"
                         android:inputType="number"
+                        android:maxLines="1"
                         android:maxLength="3"
-                        android:textAlignment="center"
-                        android:textColor="#212121" />
+                        android:gravity="center"
+                        android:textColorHint="@color/gen_black"
+                        app:met_baseColor="@color/colorText"
+                        app:met_clearButton="true"
+                        app:met_errorColor="#F44336"
+                        app:met_floatingLabel="highlight"
+                        app:met_primaryColor="@color/colorAccent" />
 
                     <TextView
                         android:id="@+id/textView2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20dp"
                         android:fontFamily="sans-serif-smallcaps"
                         android:text="centimètres"
                         android:textColor="#212121"

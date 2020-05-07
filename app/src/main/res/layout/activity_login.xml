@@ -5,7 +5,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#829EF3"
+    android:background="@color/colorPrimary"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -31,7 +31,7 @@
                 android:layout_width="385dp"
                 android:layout_height="191dp"
                 android:layout_marginBottom="20dp"
-                app:srcCompat="@drawable/logo" />
+                android:src="@drawable/logo2" />
 
             <com.github.florent37.materialtextfield.MaterialTextField
                 android:layout_width="match_parent"
@@ -44,7 +44,7 @@
                     android:id="@+id/InputLoginEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Enter Email"
+                    android:hint="@string/login_email"
                     android:textColor="#34495e" />
 
             </com.github.florent37.materialtextfield.MaterialTextField>
@@ -62,7 +62,7 @@
                     android:id="@+id/InputLoginPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Enter Password"
+                    android:hint="@string/login_password"
                     android:inputType="textPassword"
                     android:textColor="#34495e" />
 
@@ -82,7 +82,7 @@
                     style="@style/AppTheme.RoundedCornerMaterialButton"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Login"
+                    android:text="@string/login_button"
                     android:textColor="#FFFFFF" />
 
             </LinearLayout>
@@ -100,7 +100,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
-                    android:text="|"
+                    android:text="@string/login_divider"
                     android:textStyle="bold" />
 
                 <TextView
@@ -108,7 +108,7 @@
                     style="@style/fonts"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" S'inscrire maintenant" />
+                    android:text="@string/login_creation_compte" />
 
             </LinearLayout>
 

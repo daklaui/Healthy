@@ -64,7 +64,7 @@ public class Creation_Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creation__profile2);
         pagerAdapter  = new AuthenticationPagerAdapter(getSupportFragmentManager());
-        viewPager=(CustomViewPagerNoSwip)findViewById(R.id.viewPage);
+        viewPager= findViewById(R.id.viewPage);
         btnNext=findViewById(R.id.btnNext);
         btnSkip=findViewById(R.id.btnSkip);
         btnValide=findViewById(R.id.btnvValide);
@@ -631,7 +631,7 @@ else
     {
         double res ;
         double x = Math.pow((double)t/100,2.0);
-        return res = (double)p/x ;
+        return res = p /x ;
     }
 
     public void etat(double imc)

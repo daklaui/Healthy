@@ -26,7 +26,7 @@ public class CreateProfileStep1Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_profile_step1);
 
-        DatePicker dp = (DatePicker) findViewById(R.id.InputStep1Anniversaire);
+        DatePicker dp = findViewById(R.id.InputStep1Anniversaire);
         Button b1 = findViewById(R.id.BtnStep1Suivant);
         sharedpreferences = getSharedPreferences("MonProfil", Context.MODE_PRIVATE);
 
@@ -61,7 +61,7 @@ public class CreateProfileStep1Activity extends AppCompatActivity {
 
 
     public String getDateofBirth(){
-        DatePicker dp = (DatePicker) findViewById(R.id.InputStep1Anniversaire);
+        DatePicker dp = findViewById(R.id.InputStep1Anniversaire);
         StringBuilder builder=new StringBuilder();
         builder.append((dp.getMonth() + 1)+"/");//month is 0 based
         builder.append(dp.getDayOfMonth()+"/");
@@ -71,7 +71,7 @@ public class CreateProfileStep1Activity extends AppCompatActivity {
 
 
     public String currentDate(){
-        DatePicker dp = (DatePicker) findViewById(R.id.InputStep1Anniversaire);
+        DatePicker dp = findViewById(R.id.InputStep1Anniversaire);
 
         StringBuilder todaydate=new StringBuilder();
         Calendar today=Calendar.getInstance();
@@ -82,7 +82,7 @@ public class CreateProfileStep1Activity extends AppCompatActivity {
                 && today.get(Calendar.DAY_OF_MONTH) < dp.getYear()) {
             age--;
         }
-        todaydate.append(String.valueOf(age));
+        todaydate.append(age);
         return todaydate.toString();
     }
 

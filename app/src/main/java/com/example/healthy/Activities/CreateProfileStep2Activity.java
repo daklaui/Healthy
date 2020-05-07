@@ -41,7 +41,7 @@ public class CreateProfileStep2Activity extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                RadioGroup rg = (RadioGroup) findViewById(R.id.RadioGroupStep2);
+                RadioGroup rg = findViewById(R.id.RadioGroupStep2);
                 EditText e1 = findViewById(R.id.Poids_perder);
                 EditText e2 = findViewById(R.id.InputStep2Taille);
                 String poids = e1.getText().toString();
@@ -66,7 +66,7 @@ public class CreateProfileStep2Activity extends AppCompatActivity {
                         double x =  calculeIMC(Integer.parseInt(poids),Integer.parseInt(taille));
                         p.set_imc(x);
                         int id = rg.getCheckedRadioButtonId();
-                        RadioButton rb = (RadioButton) findViewById(id);
+                        RadioButton rb = findViewById(id);
                         String gender=rb.getText().toString();
                         p.set_sexe(gender);
                         db.addProfile(p);
@@ -90,7 +90,7 @@ public class CreateProfileStep2Activity extends AppCompatActivity {
     public Boolean checkInputs()
     {
 
-        RadioGroup rg = (RadioGroup) findViewById(R.id.RadioGroupStep2);
+        RadioGroup rg = findViewById(R.id.RadioGroupStep2);
         EditText e1 = findViewById(R.id.Poids_perder);
         EditText e2 = findViewById(R.id.InputStep2Taille);
 

@@ -205,7 +205,7 @@ public class Profile extends AppCompatActivity
     {
         double res ;
         double x = Math.pow((double)t/100,2.0);
-        return res = (double)p/x ;
+        return res = p /x ;
     }
 
     public String getDay()

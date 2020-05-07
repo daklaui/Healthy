@@ -1,5 +1,51 @@
 <resources>
-    <string name="app_name">Healthy</string>
+    <string name="app_name">MyHealthyPal</string>
+
+
+    <!-- login activity -->
+    <string name="login_email">Adresse email : </string>
+    <string name="login_password">Mot de passe : </string>
+    <string name="login_creation_compte">Créer un compte</string>
+    <string name="login_button">Login</string>
+    <string name="login_divider">|</string>
+    <!-- register activity -->
+    <string name="register_reenter_password">Confirmer votre mot de passe : </string>
+    <string name="register_compte">Création du compte</string>
+    <string name="register_sauthentifier">Authentification</string>
+    <!--creation du profile activity -->
+    <string name="create_profile_etape1">étape 1/2 </string>
+    <string name="create_profile_etape2">étape 2/2 </string>
+    <string name="create_profile">Détails du profil</string>
+    <string name="create_profile_prénom">Prénom :</string>
+    <string name="create_profile_nom">Nom : </string>
+    <string name="create_profile_date_de_naissance">Date de naissance : </string>
+    <string name="create_profile_sexe">Sexe : </string>
+    <string name="create_profile_poids">Poids : </string>
+    <string name="create_profile_taille">Taille : </string>
+    <string name="create_profile_kg">Kilogrammes </string>
+    <string name="create_profile_cm">Centimétres </string>
+    <!--IMC -->
+    <string name="IMC">Indice de Masse Corporelle (IMC) </string>
+    <!--degrée-->
+    <string name="degré">Degré d\'activité</string>
+    <string name="degré_1">Pas trés actif</string>
+    <string name="degré_1_a">Vous passez la majeur partie de la journée en position assise.</string>
+    <string name="degré_2">Modérément actif</string>
+    <string name="degré_2_a">Vous passez une bonne partie de la journée debout.</string>
+    <string name="degré_3">Actif</string>
+    <string name="degré_3_a">Vous passez une bonne partie de la journée a faire des activités physiques.</string>
+    <string name="degré_4">Trés actif</string>
+    <string name="degré_4_a">Vous passez la majeure partie de la journée a faire des activités trés physiques.</string>
+    <!--objectif-->
+    <string name="obj">Objectif : </string>
+
+
+
+
+
+
+
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

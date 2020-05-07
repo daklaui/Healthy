@@ -181,7 +181,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     public Boolean checkEmail()
     {
-        EditText emailValidate = (EditText)findViewById(R.id.InputRegisterEmail);
+        EditText emailValidate = findViewById(R.id.InputRegisterEmail);
         String email = emailValidate.getText().toString().trim();
         String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
