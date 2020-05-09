@@ -151,11 +151,11 @@ public class Creation_Profile extends AppCompatActivity {
                     {
                         t3.setTextColor(Color.YELLOW);
                         prop1.setCardBackgroundColor(Color.YELLOW);
-                        prop2.setCardBackgroundColor(Color.TRANSPARENT);
-                        prop3.setCardBackgroundColor(Color.TRANSPARENT);
-                        prop4.setCardBackgroundColor(Color.TRANSPARENT);
-                        prop5.setCardBackgroundColor(Color.TRANSPARENT);
-                        prop6.setCardBackgroundColor(Color.TRANSPARENT);
+                        prop2.setCardBackgroundColor(Color.WHITE);
+                        prop3.setCardBackgroundColor(Color.WHITE);
+                        prop4.setCardBackgroundColor(Color.WHITE);
+                        prop5.setCardBackgroundColor(Color.WHITE);
+                        prop6.setCardBackgroundColor(Color.WHITE);
                      //   t2.setText("Votre Etat :  Votre IMC est trop faible : vous étes en situation de maigreur");
                         t3.setText("Recommandation :  Prendre du poids");
                        // t4.setText(" Si votre IMC est inférieur à 18,5, vous êtes maigre, au sens médical du terme. Aussi peut-il apparaître nécessaire pour vous de grossir : mais rien ne remplace une consultation chez le médecin, seul lui pourra vous donner la marche à suivre.");
@@ -166,11 +166,11 @@ public class Creation_Profile extends AppCompatActivity {
                         t3.setText("Recommandation : Continuez à manger équilibré");
                         t3.setTextColor(Color.GREEN);
                         prop2.setCardBackgroundColor(Color.GREEN);
-                        prop1.setCardBackgroundColor(Color.TRANSPARENT);
-                        prop3.setCardBackgroundColor(Color.TRANSPARENT);
-                        prop4.setCardBackgroundColor(Color.TRANSPARENT);
-                        prop5.setCardBackgroundColor(Color.TRANSPARENT);
-                        prop6.setCardBackgroundColor(Color.TRANSPARENT);
+                        prop1.setCardBackgroundColor(Color.WHITE);
+                        prop3.setCardBackgroundColor(Color.WHITE);
+                        prop4.setCardBackgroundColor(Color.WHITE);
+                        prop5.setCardBackgroundColor(Color.WHITE);
+                        prop6.setCardBackgroundColor(Color.WHITE);
                         //  t4.setText(" Si votre IMC se situe entre 18,5 et 25, vous êtes de corpulence normale, c’est-à-dire que vous n’êtes ni en surpoids, ni maigre. Continuez à manger équilibré et à faire de l’exercice régulièrement : ce mode de vie sain est garant d’une bonne santé, sans oublier" + " la notion de plaisir bien sûr !");
                     }
                     else if((IMC > 25) && (IMC <= 30))
@@ -179,11 +179,11 @@ public class Creation_Profile extends AppCompatActivity {
                         t3.setText("Recommandation : Perdre du poids");
                         t3.setTextColor(Color.RED);
                         prop3.setCardBackgroundColor(Color.RED);
-                        prop2.setCardBackgroundColor(Color.TRANSPARENT);
-                        prop1.setCardBackgroundColor(Color.TRANSPARENT);
-                        prop4.setCardBackgroundColor(Color.TRANSPARENT);
-                        prop5.setCardBackgroundColor(Color.TRANSPARENT);
-                        prop6.setCardBackgroundColor(Color.TRANSPARENT);
+                        prop2.setCardBackgroundColor(Color.WHITE);
+                        prop1.setCardBackgroundColor(Color.WHITE);
+                        prop4.setCardBackgroundColor(Color.WHITE);
+                        prop5.setCardBackgroundColor(Color.WHITE);
+                        prop6.setCardBackgroundColor(Color.WHITE);
                         //  t4.setText(" Si votre IMC se situe entre 18,5 et 25, vous êtes de corpulence normale, c’est-à-dire que vous n’êtes ni en surpoids, ni maigre. Continuez à manger équilibré et à faire de l’exercice régulièrement : ce mode de vie sain est garant d’une bonne santé, sans oublier" + " la notion de plaisir bien sûr !");
                     }
                     else if((IMC > 30) && (IMC <= 35))
@@ -192,11 +192,11 @@ public class Creation_Profile extends AppCompatActivity {
                         t3.setText("Recommandation : Perdre du poids");
                         t3.setTextColor(Color.RED);
                         prop4.setCardBackgroundColor(Color.RED);
-                        prop2.setCardBackgroundColor(Color.TRANSPARENT);
-                        prop3.setCardBackgroundColor(Color.TRANSPARENT);
-                        prop1.setCardBackgroundColor(Color.TRANSPARENT);
-                        prop5.setCardBackgroundColor(Color.TRANSPARENT);
-                        prop6.setCardBackgroundColor(Color.TRANSPARENT);
+                        prop2.setCardBackgroundColor(Color.WHITE);
+                        prop3.setCardBackgroundColor(Color.WHITE);
+                        prop1.setCardBackgroundColor(Color.WHITE);
+                        prop5.setCardBackgroundColor(Color.WHITE);
+                        prop6.setCardBackgroundColor(Color.WHITE);
                         //  t4.setText(" Si votre IMC se situe entre 18,5 et 25, vous êtes de corpulence normale, c’est-à-dire que vous n’êtes ni en surpoids, ni maigre. Continuez à manger équilibré et à faire de l’exercice régulièrement : ce mode de vie sain est garant d’une bonne santé, sans oublier" + " la notion de plaisir bien sûr !");
                     }
                     else if((IMC > 35) && (IMC <= 40))
@@ -205,11 +205,11 @@ public class Creation_Profile extends AppCompatActivity {
                         t3.setText("Recommandation : Perdre du poids");
                         t3.setTextColor(Color.RED);
                         prop5.setCardBackgroundColor(Color.RED);
-                        prop2.setCardBackgroundColor(Color.TRANSPARENT);
-                        prop3.setCardBackgroundColor(Color.TRANSPARENT);
-                        prop4.setCardBackgroundColor(Color.TRANSPARENT);
-                        prop1.setCardBackgroundColor(Color.TRANSPARENT);
-                        prop6.setCardBackgroundColor(Color.TRANSPARENT);
+                        prop2.setCardBackgroundColor(Color.WHITE);
+                        prop3.setCardBackgroundColor(Color.WHITE);
+                        prop4.setCardBackgroundColor(Color.WHITE);
+                        prop1.setCardBackgroundColor(Color.WHITE);
+                        prop6.setCardBackgroundColor(Color.WHITE);
                         //  t4.setText(" Si votre IMC se situe entre 18,5 et 25, vous êtes de corpulence normale, c’est-à-dire que vous n’êtes ni en surpoids, ni maigre. Continuez à manger équilibré et à faire de l’exercice régulièrement : ce mode de vie sain est garant d’une bonne santé, sans oublier" + " la notion de plaisir bien sûr !");
                     }
                     else
@@ -219,11 +219,11 @@ public class Creation_Profile extends AppCompatActivity {
                         t3.setTextColor(Color.RED);
                         prop6.setCardBackgroundColor(Color.RED);
                        // t4.setText("Si votre IMC est supérieur à 25 "+"\n"+",vous êtes en situation de surpoids."+"\n"+"Peut-il apparaître nécessaire pour vous de maigrir :"+"\n"+" mais rien ne remplace une consultation chez le médecin,"+"\n"+"seul lui pourra vous donner la marche à suivre. ");
-                        prop2.setCardBackgroundColor(Color.TRANSPARENT);
-                        prop3.setCardBackgroundColor(Color.TRANSPARENT);
-                        prop4.setCardBackgroundColor(Color.TRANSPARENT);
-                        prop5.setCardBackgroundColor(Color.TRANSPARENT);
-                        prop1.setCardBackgroundColor(Color.TRANSPARENT);
+                        prop2.setCardBackgroundColor(Color.WHITE);
+                        prop3.setCardBackgroundColor(Color.WHITE);
+                        prop4.setCardBackgroundColor(Color.WHITE);
+                        prop5.setCardBackgroundColor(Color.WHITE);
+                        prop1.setCardBackgroundColor(Color.WHITE);
                       //  speedView.with = false;
 
                     }
@@ -493,6 +493,7 @@ else
            p.set_taille(Integer.parseInt(Taille.getText().toString()));
            p.set_imc(calculeIMC(Double.parseDouble(Poids.getText().toString()),Integer.parseInt(Taille.getText().toString())));
            p.set_sexe(sexe);
+           p.setDate_Start(getDay());
            db.addProfile(p);
 
            Regime r = new Regime();
@@ -673,23 +674,37 @@ else
 
     public void addDiet()
     {
-        Diet d250 = new Diet("Perdre 250 g par semaine " , 1800);
-        Diet d500 = new Diet("Perdre 500 g par semaine " , 1700);
-        Diet d750 = new Diet("Perdre 750 g par semaine " , 1600);
-        Diet d1000 = new Diet("Perdre 1000 g par semaine " , 1500);
-        Diet d0 = new Diet("Maintenir le poids " , 2000);
-        Diet dx250 = new Diet("Avoir 250 g par semaine " , 2250);
-        Diet dx500 = new Diet("Avoir 500 g par semaine" , 2500);
-        db.adddiet(d250);
-        db.adddiet(d500);
-        db.adddiet(d750);
-        db.adddiet(d1000);
-        db.adddiet(d0);
-        db.adddiet(dx250);
-        db.adddiet(dx500);
+        Diet d ;
+        try{
+            d = db.getDiet(1);
+        }
+        catch (Exception e){
+            d=null;
+
+        }
+        if(d==null)
+        {
+            Diet d250 = new Diet("Perdre 250 g par semaine " , 1800);
+            Diet d500 = new Diet("Perdre 500 g par semaine " , 1700);
+            Diet d750 = new Diet("Perdre 750 g par semaine " , 1600);
+            Diet d1000 = new Diet("Perdre 1000 g par semaine " , 1500);
+            Diet d0 = new Diet("Maintenir le poids " , 2000);
+            Diet dx250 = new Diet("Avoir 250 g par semaine " , 2250);
+            Diet dx500 = new Diet("Avoir 500 g par semaine" , 2500);
+            db.adddiet(d250);
+            db.adddiet(d500);
+            db.adddiet(d750);
+            db.adddiet(d1000);
+            db.adddiet(d0);
+            db.adddiet(dx250);
+            db.adddiet(dx500);
+        }
+
     }
 
 }
+
+
 
 class AuthenticationPagerAdapter extends FragmentPagerAdapter {
     private ArrayList<Fragment> fragmentList = new ArrayList<>();

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/Date_historique"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:text="Date"
+                android:textAlignment="textStart"
+                android:textColor="#030303"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/Poids_histoeique"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:layout_weight="1"
+
+                android:padding="5dp"
+                android:text="Poids"
+                android:textAlignment="center"
+                android:textColor="#030303"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/EvolutionHistorique"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:layout_column="3"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:text="Evolution"
+                android:textAlignment="center"
+                android:textColor="#030303"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/IMC_Historqie"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:layout_column="4"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:text="IMC"
+                android:textAlignment="center"
+                android:textColor="#030303"
+                android:textSize="18sp" />
+
+
+        </TableRow>
+    </TableLayout>
+</LinearLayout>

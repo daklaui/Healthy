@@ -15,51 +15,35 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
-        <activity android:name=".ListeOfFood"/>
-
+        <activity android:name=".ListeOfHistoriques"></activity>
+        <activity android:name=".Suivi" />
+        <activity android:name=".ListeOfFood" />
         <activity android:name=".Activities.DiaryActivity" />
-
         <activity android:name=".InformationFood" />
-
-        <activity
-            android:name=".MainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-        </activity >
-
-        <activity android:name=".Main2Activity" />
-
-        <activity android:name=".Add_Historique_Regime" />
-
-        <activity android:name=".Aliments" />
-
-        <activity android:name=".profile_activity" />
-
-        <activity android:name=".Profile" android:label="@string/title_activity_profile" android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity android:name=".Activities.LoginActivity" />
-
-        <activity android:name=".Activities.EtatActivity" />
-
-        <activity android:name=".Activities.CreateProfileStep2Activity" />
-
-        <activity android:name=".Creation_Profile" />
-
-        <activity android:name=".Activities.CreateProfileStep1Activity" />
-
-        <activity android:name=".addFood" />
-
-        <activity android:name=".Activities.RegisterActivity" />
-
-        <activity android:name=".CreateFood">
-
-
         </activity>
+        <activity android:name=".Main2Activity" />
+        <activity android:name=".Add_Historique_Regime" />
+        <activity android:name=".Aliments" />
+        <activity android:name=".Profile" />
+        <activity
+            android:name=".profile_activity"
+            android:label="@string/title_activity_profile"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activities.LoginActivity" />
+        <activity android:name=".Activities.EtatActivity" />
+        <activity android:name=".Activities.CreateProfileStep2Activity" />
+        <activity android:name=".Creation_Profile" />
+        <activity android:name=".Activities.CreateProfileStep1Activity" />
+        <activity android:name=".addFood" />
+        <activity android:name=".Activities.RegisterActivity" />
+        <activity android:name=".CreateFood" />
     </application>
 
 </manifest>

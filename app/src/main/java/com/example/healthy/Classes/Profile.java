@@ -14,10 +14,19 @@ public class Profile {
     int _taille ;
     double _imc ;
 
+    public String getDate_Start() {
+        return Date_Start;
+    }
+
+    public void setDate_Start(String date_Start) {
+        Date_Start = date_Start;
+    }
+
+    String Date_Start;
     public Profile() {
     }
 
-    public Profile(int _id, String _nom, String _prénom, String _anniversaire, int _age, String _sexe, double _poids, int _taille, double _imc) {
+    public Profile(int _id, String _nom, String _prénom, String _anniversaire, int _age, String _sexe, double _poids, int _taille, double _imc,String Date_Start) {
         this._id = _id;
         this._nom = _nom;
         this._prénom = _prénom;
@@ -27,6 +36,7 @@ public class Profile {
         this._poids = _poids;
         this._taille = _taille;
         this._imc = _imc;
+        this.Date_Start=Date_Start;
     }
 
     public int get_id() {

@@ -24,6 +24,7 @@ import com.android.volley.request.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.healthy.Adapters.FoodAdapter;
 import com.example.healthy.Classes.Food;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.JsonObject;
 import com.mancj.materialsearchbar.MaterialSearchBar;
 
@@ -36,6 +37,7 @@ import java.util.ArrayList;
 public class addFood extends AppCompatActivity {
 RecyclerView recyclerView;
 MaterialSearchBar  searchBar;
+    FloatingActionButton fab1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +47,13 @@ MaterialSearchBar  searchBar;
         searchBar = findViewById(R.id.searchBar);
         searchBar.setCardViewElevation(10);
         searchBar.setSpeechMode(false);
-
+        fab1=findViewById(R.id.fasb);
+        fab1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(addFood.this,CreateFood.class));
+            }
+        });
         searchBar.addTextChangeListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.example.healthy.Classes.Account;
 import com.example.healthy.Classes.Diet;
@@ -38,6 +39,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String PROFILE_POIDS = "poids";
     private static final String PROFILE_TAILLE = "taille";
     private static final String PROFILE_IMC = "imc";
+    private static final String PROFILE_DATE_START = "Date_Start";
     //TABLE REGIME_CHOIX
     private static final String TABLE_REGIME = "REGIME";
     private static final String REGIME_ID = "id";
@@ -45,6 +47,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String NEW_POIDS = "nouveau_poids";
     private static final String OBJECTIF = "objectif";
     private static final String TYPE_REGIME = "type_regime";
+
     //TABLE HISTORIQUE_REGIME
     private static final String TABLE_HISTORIQUE_REGIME = "HISTORIQUE_REGIME";
     private static final String HISTORIQUE_REGIME_ID = "id";
@@ -84,7 +87,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + PROFILE_ID + " INTEGER  PRIMARY KEY AUTOINCREMENT ," + PROFILE_NOM + " TEXT,"
                 + PROFILE_PRENOM+ " TEXT,"+ PROFILE_ANNIVERSAIRE+ " TEXT,"+ PROFILE_AGE +" INTEGER,"
                 + PROFILE_SEXE+ " TEXT,"+ PROFILE_POIDS + " DOUBLE,"+PROFILE_TAILLE+" DOUBLE,"+
-                PROFILE_IMC+" INTEGER" + ")";
+                PROFILE_IMC+" INTEGER ,"+ PROFILE_DATE_START + ")";
 
         String CREATE_REGIME_TABLE = "CREATE TABLE " + TABLE_REGIME + "("
                 + REGIME_ID + " INTEGER  PRIMARY KEY AUTOINCREMENT ," + DEGRE_ACTIVITE + " INTEGER,"
@@ -191,6 +194,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(PROFILE_POIDS, profile.get_poids());
         values.put(PROFILE_TAILLE, profile.get_taille());
         values.put(PROFILE_IMC, profile.get_imc());
+        values.put(PROFILE_DATE_START, profile.getDate_Start());
         db.insert(TABLE_PROFILE, null, values);
         db.close();
     }
@@ -199,14 +203,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(TABLE_PROFILE, new String[] { PROFILE_ID,
-                        PROFILE_NOM,PROFILE_PRENOM,PROFILE_ANNIVERSAIRE,PROFILE_AGE,PROFILE_SEXE,PROFILE_POIDS,PROFILE_TAILLE,PROFILE_IMC}, PROFILE_ID + "=?",
+                        PROFILE_NOM,PROFILE_PRENOM,PROFILE_ANNIVERSAIRE,PROFILE_AGE,PROFILE_SEXE,PROFILE_POIDS,PROFILE_TAILLE,PROFILE_IMC,PROFILE_DATE_START}, PROFILE_ID + "=?",
                 new String[] { String.valueOf(id) }, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
 
         Profile profil = new Profile(Integer.parseInt(cursor.getString(0)),
                 cursor.getString(1), cursor.getString(2),cursor.getString(3),Integer.parseInt(cursor.getString(4)),
-                cursor.getString(5),Integer.parseInt(cursor.getString(6)),Integer.parseInt(cursor.getString(7)),Double.parseDouble(cursor.getString(8)));
+                cursor.getString(5),Integer.parseInt(cursor.getString(6)),Integer.parseInt(cursor.getString(7)),Double.parseDouble(cursor.getString(8)),cursor.getString(9));
         return profil;
     }
 
@@ -251,15 +255,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public Diet getDiet(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
-
+        Diet diet=null;
         Cursor cursor = db.query(TABLE_DIET, new String[] { DIET_ID ,
                         DIET_TYPE ,DIET_CALORIES }, DIET_ID + "=?",
                 new String[] { String.valueOf(id) }, null, null, null, null);
         if (cursor != null)
-            cursor.moveToFirst();
 
-        Diet diet = new Diet(cursor.getString(1),
-                Integer.parseInt(cursor.getString(2)));
+        {
+            cursor.moveToFirst();
+             diet = new Diet(cursor.getString(1),
+                    Integer.parseInt(cursor.getString(2)));
+        }
+        Log.e("diettest",diet.toString());
         return diet;
     }
 
@@ -275,9 +282,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-    public List<Historique_Regime> getListeHistorique_Regime(int id) {
+    public ArrayList<Historique_Regime> getListeHistorique_Regime(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        List<Historique_Regime> historique_regimes= new ArrayList<>();
+        ArrayList<Historique_Regime> historique_regimes= new ArrayList<>();
         Cursor cursor = db.query(TABLE_HISTORIQUE_REGIME, new String[] { HISTORIQUE_REGIME_ID ,
                         HISTORIQUE_REGIME_DATE ,HISTORIQUE_REGIME_NEW_POIDS,HISTORIQUE_REGIME_EVOLUTION,HISTORIQUE_REGIME_NEW_IMC },null,
                 null, null, null, null);
@@ -292,7 +299,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 
 
-        return historique_regimes;
+        return  historique_regimes;
     }
 
     public Historique_Regime isteHistorique_Regime() {
@@ -316,7 +323,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
 
-    //Historique_Regime
+    //Add Food 30042020
     public void addFood(Food regime) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();

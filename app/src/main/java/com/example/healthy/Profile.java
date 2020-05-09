@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import com.app.progresviews.ProgressLine;
+import com.example.healthy.Activities.DiaryActivity;
 import com.example.healthy.Classes.Account;
 import com.example.healthy.Classes.Historique_Regime;
 import com.example.healthy.Classes.Regime;
@@ -13,7 +14,6 @@ import com.example.healthy.Database.DatabaseHandler;
 import com.github.anastr.speedviewlib.SpeedView;
 import com.github.anastr.speedviewlib.components.Section;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import android.util.Log;
 import android.view.View;
@@ -35,12 +35,25 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.joda.time.DateTime;
+import org.joda.time.Weeks;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+
+import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
+import java.util.Date;
 
 public class Profile extends AppCompatActivity
 
         implements NavigationView.OnNavigationItemSelectedListener {
     SpeedView speedView;
+    FloatingActionButton fab1,fab2,fab ;
+    Boolean isFABOpen = false ;
+
     TextView Start,Goal,Gain,Current,Nom_profile,Email,Profile,nbCalperDay;
     ProgressLine progressLine;    DatabaseHandler db;
     @Override
@@ -59,10 +72,44 @@ public class Profile extends AppCompatActivity
         Regime regime=db.getRegime(1);
         Account account=db.getAccount_parid(1);
         Historique_Regime historique_regime=db.isteHistorique_Regime();
-        Log.e("mmmmmm",profile.get_prénom());
-        speedView.setSpeedAt((float)profile.get_imc());
-        Start=findViewById(R.id.StartW);
-        Goal=findViewById(R.id.Goal);
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab1 = findViewById(R.id.fab1);
+        fab2 = findViewById(R.id.fab2);
+
+        /**********************************************************/
+
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!isFABOpen){
+                    showFABMenu();
+                }else{
+                    closeFABMenu();
+                }
+            }
+        });
+
+        fab1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Profile.this , addFood.class );
+                startActivity(i);
+            }
+        });
+
+
+
+
+
+
+        /***************************************************************/
+
+
+
+        speedView.setSpeedAt((float)historique_regime.getNew_IMC());
+        Start=findViewById(R.id.CurrentW);
+        Goal=findViewById(R.id.WeekGoal);
         progressLine=findViewById(R.id.progress_line);
 
         nbCalperDay=findViewById(R.id.NbCalories);
@@ -104,20 +151,59 @@ public class Profile extends AppCompatActivity
             cal=db.getDiet(5).getCalories();
         }
         nbCalperDay.setText(String.valueOf(cal));
-        Start.setText(String.valueOf(profile.get_poids()));
-        Goal.setText(String.valueOf(regime.getNew_poids()));
+        Start.setText(historique_regime.getNew_Poids()+" Kg");
+double obejctif=0;
+
+if(regime.getTyp_regime().contains("PERDER"))
+{
+    switch (regime.getObjectif())
+    {
+        case 1: obejctif=0.25; break;
+        case 2: obejctif=0.5; break;
+        case 3: obejctif=0.75; break;
+        case 4:  obejctif=1;break;
+    }
+    Goal.setTextColor(Color.RED);
+}
+else if (regime.getTyp_regime().contains("GA"))
+{
+    switch (regime.getObjectif())
+    {
+        case 1: obejctif=0.25; break;
+        case 2: obejctif=0.5; break;
+
+    }
+    Goal.setTextColor(Color.GREEN);
+}
+else
+{
+    obejctif=0;
+    Goal.setTextColor(Color.BLUE);
+}
+
+
+        if(GetNbweek(historique_regime.getDate())==0)
+        {
+            Goal.setText(String.valueOf(obejctif));
+        }
+        else
+        {
+
+            Goal.setText(String.valueOf(obejctif*GetNbweek(historique_regime.getDate())));
+        }
+
         int pourcentage= (int) ((100*Math.abs(profile.get_poids()-historique_regime.getNew_Poids()))/Math.abs(profile.get_poids()-regime.getNew_poids()));
 
         progressLine.setmValueText(String.valueOf(Math.abs(profile.get_poids()-historique_regime.getNew_Poids())));
         progressLine.setmPercentage(pourcentage);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-     FloatingActionButton fab = findViewById(R.id.AjouterHistoriqueRegime);
+    /* FloatingActionButton fab = findViewById(R.id.AjouterHistoriqueRegime);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               /* Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();*/
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
                 AlertDialog.Builder builder= new AlertDialog.Builder(Profile.this);
                 View mview=getLayoutInflater().inflate(R.layout.activity_add__historique__regime,null);
                 final EditText editText=mview.findViewById(R.id.New_Poids_Historique);
@@ -159,7 +245,7 @@ public class Profile extends AppCompatActivity
             @Override
             public void onClick(View view) {
                /* Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();*/
+                        .setAction("Action", null).show();
                 AlertDialog.Builder builder= new AlertDialog.Builder(Profile.this);
                 View mview=getLayoutInflater().inflate(R.layout.templatechoix,null);
 
@@ -174,7 +260,7 @@ public class Profile extends AppCompatActivity
 
             }
         });
-
+*/
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
 
@@ -200,7 +286,17 @@ public class Profile extends AppCompatActivity
         historique_regime.setEvolution(poids-Double.parseDouble(toString));
         db.addHistorique_Regime(historique_regime);
     }
+    private void showFABMenu(){
+        isFABOpen=true;
+        fab1.animate().translationY(-getResources().getDimension(R.dimen.standard_55));
+        fab2.animate().translationY(-getResources().getDimension(R.dimen.standard_105));
+    }
 
+    private void closeFABMenu(){
+        isFABOpen=false;
+        fab1.animate().translationY(0);
+        fab2.animate().translationY(0);
+    }
     public double calculeIMC(double p , int t)
     {
         double res ;
@@ -279,16 +375,10 @@ public class Profile extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
+            startActivity(new Intent(com.example.healthy.Profile.this,Suivi.class));
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_tools) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+            startActivity(new Intent(com.example.healthy.Profile.this,ListeOfHistoriques.class));
 
         }
 
@@ -296,4 +386,45 @@ public class Profile extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    private int GetNbweek(String date)
+    {
+     String date_sys=getDay();
+     String NewDateSys=date_sys.substring(6,10)+"-"+date_sys.substring(3,5)+"-"+date_sys.substring(0,2);
+     String NewDate=date.substring(6,10)+"-"+date.substring(3,5)+"-"+date.substring(0,2);
+       // String NewDateSys=date_sys;
+        //String NewDate=date;
+        DateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+        Date date1 = null;
+        Date date2 = null;
+        try {
+             date1 = f.parse(NewDateSys);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        try {
+             date2 = f.parse(NewDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        //Parsing the date
+        Calendar day1 = Calendar.getInstance();
+        Calendar day2 = Calendar.getInstance();
+        if(date1!=null && date2!=null)
+        {
+            day1.setTime(date1);
+            day2.setTime(date2);
+
+        }
+        DateTime start = new DateTime(day1.YEAR, day1.MONTH, day1.DAY_OF_MONTH, 0, 0, 0, 0);
+        DateTime end   = new DateTime(day2.YEAR, day2.MONTH, day2.DAY_OF_MONTH, 0, 0, 0, 0);
+
+        int daysBetween = day1.get(Calendar.DAY_OF_YEAR) - day2.get(Calendar.DAY_OF_YEAR);
+
+        int nbweek= Weeks.weeksBetween(start,end).getWeeks();
+
+        return  nbweek;
+    }
+
+
 }
