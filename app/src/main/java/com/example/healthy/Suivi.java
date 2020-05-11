@@ -1,6 +1,7 @@
 package com.example.healthy;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -28,6 +29,14 @@ TextView CurrentW_Suivi,WeekGoalSuivi,StartW,Difference,TimeSpent,EndGoal,lose,R
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_suivi);
+
+        Toolbar toolbar=findViewById(R.id.toolbar1);
+        toolbar.setTitle("Suivi");
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         databaseHandler= new DatabaseHandler(this);
         CurrentW_Suivi=findViewById(R.id.CurrentW_Suivi);
         WeekGoalSuivi=findViewById(R.id.WeekGoalSuivi);

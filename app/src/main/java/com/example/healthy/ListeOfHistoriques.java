@@ -2,6 +2,7 @@ package com.example.healthy;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.view.View;
@@ -32,6 +33,15 @@ FloatingActionButton floatingActionButton;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liste_of_historiques);
+
+
+        Toolbar toolbar=findViewById(R.id.includ4);
+        toolbar.setTitle("Journal");
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         databaseHandler=new DatabaseHandler(this);
         tableLayout=(ListView)findViewById(R.id.ListeHistorique);
         dataModels= databaseHandler.getListeHistorique_Regime(1);

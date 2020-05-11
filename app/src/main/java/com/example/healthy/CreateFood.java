@@ -2,6 +2,7 @@ package com.example.healthy;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.loader.content.CursorLoader;
@@ -78,6 +79,12 @@ EditText TitreNewFoo,CaloriesFood,ProteinesFood,GlucidesFood,CalciumFood,FerFood
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_food);
 
+        Toolbar toolbar=findViewById(R.id.include3);
+        toolbar.setTitle("Add food Api");
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         Dexter.withActivity(this)
                 .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
                 .withListener(new PermissionListener() {

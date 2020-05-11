@@ -71,6 +71,7 @@ class MyViewHolder_this extends RecyclerView.ViewHolder {
         foodunite = itemView.findViewById(R.id.foodunite);
         addfood = itemView.findViewById(R.id.addfood);
         imageView = itemView.findViewById(R.id.foodimage);
+        addfood.setVisibility(View.GONE);
 
     }
 

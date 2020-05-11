@@ -103,7 +103,14 @@ public class FoodAdapter extends RecyclerView.Adapter<MyViewHolder> {
                         food.setUnite(myObject.getUnite());
                         food.setQnparUnite(String.valueOf(Quntité));
                         food.setImage(myObject.getImage());
-                        food.setDate(getDay());
+                        if(myObject.getDate()=="")
+                        {
+                            food.setDate(getDay());
+                        }
+                    else
+                        {
+                            food.setDate(myObject.getDate());
+                        }
 
                         databaseHandler.addFood(food);
                        Intent intent = new Intent(activity, ListeOfFood.class);

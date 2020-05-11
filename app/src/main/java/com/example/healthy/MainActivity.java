@@ -15,11 +15,13 @@ public class MainActivity extends AppCompatActivity {
     private static final int AUTO_HIDE_DELAY_MILLIS = 2 * 1000;
     private static final int UI_ANIMATION_DELAY = 300;
     private SharedPreferences sharedpreferences;
-    private String MyPREFERENCES = "MyPrefs";
+    private String MyPREFERENCES = "Session";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+
 
         checkNextScreenAfterDelay();
     }
@@ -30,8 +32,16 @@ public class MainActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                openMainActivity();
 
+                if(sharedpreferences.getString("Connected","0").contains("1"))
+                {
+                    Intent intent = new Intent(MainActivity.this, Profile.class);
+                    startActivity(intent);
+                }
+                else
+                {
+                    openMainActivity();
+                }
             }
 
 

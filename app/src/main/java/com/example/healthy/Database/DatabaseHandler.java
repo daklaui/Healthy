@@ -336,12 +336,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.insert(DAILY_FOOD, null, values);
         db.close();
     }
-    public List<Food> getListeNourriture() {
+    public List<Food> getListeNourriture(String Date) {
         SQLiteDatabase db = this.getWritableDatabase();
         List<Food> Nourriture= new ArrayList<>();
         Cursor cursor = db.query(DAILY_FOOD, new String[] { DAILY_FOOD_TITRE ,
-                        DAILY_FOOD_UNITE ,DAILY_FOOD_CALORIES,DAILY_FOOD_DATE, DAILY_FOOD_QUNTITE,DAILY_FOOD_IMAGE},null,
-                null, null, null, null);
+                        DAILY_FOOD_UNITE ,DAILY_FOOD_CALORIES,DAILY_FOOD_DATE, DAILY_FOOD_QUNTITE,DAILY_FOOD_IMAGE},DAILY_FOOD_DATE+"=?",
+                new String[] {Date}, null, null, null);
         if (cursor != null)
             if(cursor.moveToFirst())
             {

@@ -12,6 +12,11 @@
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
             android:title="Journal" />
+
+        <item
+            android:id="@+id/ConsulterFood"
+            android:icon="@drawable/ic_remove_red_eye_black_24dp"
+            android:title="List Of foods" />
     </group>
 
 </menu>

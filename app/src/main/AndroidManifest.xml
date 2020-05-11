@@ -15,9 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ListeOfHistoriques"></activity>
-        <activity android:name=".Suivi" />
-        <activity android:name=".ListeOfFood" />
+        <activity android:name=".ListeOfHistoriques" android:parentActivityName=".Profile"></activity>
+        <activity android:name=".Suivi" android:parentActivityName=".Profile" />
+        <activity android:name=".ListeOfFood" android:parentActivityName=".Profile" />
         <activity android:name=".Activities.DiaryActivity" />
         <activity android:name=".InformationFood" />
         <activity android:name=".MainActivity">
@@ -41,9 +41,10 @@
         <activity android:name=".Activities.CreateProfileStep2Activity" />
         <activity android:name=".Creation_Profile" />
         <activity android:name=".Activities.CreateProfileStep1Activity" />
-        <activity android:name=".addFood" />
+        <activity android:name=".addFood" android:parentActivityName=".Profile" />
         <activity android:name=".Activities.RegisterActivity" />
-        <activity android:name=".CreateFood" />
+        <activity android:name=".CreateFood" android:parentActivityName=".addFood" />
+        <receiver android:name=".Service.Remainder" />
     </application>
 
 </manifest>

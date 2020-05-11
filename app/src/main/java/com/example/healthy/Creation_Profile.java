@@ -7,7 +7,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -58,6 +60,8 @@ public class Creation_Profile extends AppCompatActivity {
     KdGaugeView speedoMeterView;
     SpeedView speedView;
     double Min_poids,Max_poids;
+    public static final String MyPREFERENCES = "Session" ;
+    SharedPreferences sharedpreferences;
     DatabaseHandler db = new DatabaseHandler(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +83,7 @@ public class Creation_Profile extends AppCompatActivity {
         pagerAdapter.addFragmet(new Step8());
         viewPager.setAdapter(pagerAdapter);
         loadingDialog = new LoadingDialog(Creation_Profile.this);
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -572,7 +577,9 @@ else
 
 
 
-
+           SharedPreferences.Editor editor = sharedpreferences.edit();
+           editor.putString("Connected", "1");
+           editor.commit();
            startActivity(new Intent(Creation_Profile.this, com.example.healthy.Profile.class));
        }
        else

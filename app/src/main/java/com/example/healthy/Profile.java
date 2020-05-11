@@ -1,16 +1,22 @@
 package com.example.healthy;
 
+import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import com.app.progresviews.ProgressLine;
 import com.example.healthy.Activities.DiaryActivity;
+import com.example.healthy.Activities.LoginActivity;
 import com.example.healthy.Classes.Account;
 import com.example.healthy.Classes.Historique_Regime;
 import com.example.healthy.Classes.Regime;
 import com.example.healthy.Database.DatabaseHandler;
+import com.example.healthy.Service.Remainder;
 import com.github.anastr.speedviewlib.SpeedView;
 import com.github.anastr.speedviewlib.components.Section;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -34,6 +40,7 @@ import android.view.Menu;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.joda.time.DateTime;
 import org.joda.time.Weeks;
@@ -53,13 +60,21 @@ public class Profile extends AppCompatActivity
     SpeedView speedView;
     FloatingActionButton fab1,fab2,fab ;
     Boolean isFABOpen = false ;
-
+    public static final String MyPREFERENCES = "Session" ;
+    SharedPreferences sharedpreferences;
     TextView Start,Goal,Gain,Current,Nom_profile,Email,Profile,nbCalperDay;
     ProgressLine progressLine;    DatabaseHandler db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.HOUR_OF_DAY, 11);
+       c.set(Calendar.MINUTE, 59);
+      c.set(Calendar.SECOND, 0);
+
+        startAlarm(c);
          db = new DatabaseHandler(this);
         speedView = findViewById(R.id.speedView1);
         speedView.setMaxSpeed(50);
@@ -75,14 +90,18 @@ public class Profile extends AppCompatActivity
         FloatingActionButton fab = findViewById(R.id.fab);
         fab1 = findViewById(R.id.fab1);
         fab2 = findViewById(R.id.fab2);
-
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         /**********************************************************/
 
 
+
+
+/*****************************************************************************/
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(!isFABOpen){
+                   // Toast.makeText(Profile.this,c.getTime().toString(),Toast.LENGTH_LONG).show();
                     showFABMenu();
                 }else{
                     closeFABMenu();
@@ -362,7 +381,11 @@ else
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            SharedPreferences.Editor editor = sharedpreferences.edit();
+            editor.putString("Connected", "0");
+            editor.commit();
+            com.example.healthy.Profile.this.finishAffinity();
+            startActivity( new Intent(Profile.this, LoginActivity.class));
         }
 
         return super.onOptionsItemSelected(item);
@@ -379,6 +402,11 @@ else
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
             startActivity(new Intent(com.example.healthy.Profile.this,ListeOfHistoriques.class));
+
+        }
+
+        else if (id == R.id.ConsulterFood) {
+            startActivity(new Intent(com.example.healthy.Profile.this,ListeOfFood.class));
 
         }
 
@@ -426,5 +454,13 @@ else
         return  nbweek;
     }
 
-
+    private void startAlarm(Calendar c) {
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this, Remainder.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
+        if (c.before(Calendar.getInstance())) {
+            c.add(Calendar.DATE, 1);
+        }
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pendingIntent);
+    }
 }

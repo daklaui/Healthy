@@ -2,6 +2,7 @@ package com.example.healthy;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,6 +15,7 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
+
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -33,10 +35,17 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+
+
+import devs.mulham.horizontalcalendar.HorizontalCalendar;
+import devs.mulham.horizontalcalendar.utils.HorizontalCalendarListener;
 
 public class addFood extends AppCompatActivity {
 RecyclerView recyclerView;
 MaterialSearchBar  searchBar;
+String dateFinal="";
+   // Toolbar mActionBarToolbar;
     FloatingActionButton fab1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +57,13 @@ MaterialSearchBar  searchBar;
         searchBar.setCardViewElevation(10);
         searchBar.setSpeechMode(false);
         fab1=findViewById(R.id.fasb);
+
+        Toolbar toolbar=findViewById(R.id.include2);
+        toolbar.setTitle("Add food");
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         fab1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,7 +77,7 @@ MaterialSearchBar  searchBar;
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                Toast.makeText(getApplicationContext(),charSequence,Toast.LENGTH_LONG).show();
+
                 ListeDesFoods(charSequence.toString());
             }
 
@@ -72,9 +88,34 @@ MaterialSearchBar  searchBar;
 
         });
 
+        Calendar startDate = Calendar.getInstance();
+        int month=startDate.get(Calendar.MONTH);
 
+
+        startDate.add(Calendar.MONTH, -month);
+
+        /* ends after 1 month from now */
+        Calendar endDate = Calendar.getInstance();
+        endDate.add(Calendar.MONTH, 1);
+
+        HorizontalCalendar horizontalCalendar = new HorizontalCalendar.Builder(this, R.id.calendarView2)
+                .range(startDate, endDate)
+                .datesNumberOnScreen(5)
+                .build();
+
+        horizontalCalendar.setCalendarListener(new HorizontalCalendarListener() {
+            @Override
+            public void onDateSelected(Calendar date, int position) {
+                dateFinal=getDay(date);
+              //  Toast.makeText(addFood.this,getDay(date),Toast.LENGTH_LONG).show();
+            }
+        });
 
     }
+
+
+
+
 
 
     void  ListeDesFoods(String text)
@@ -98,6 +139,7 @@ MaterialSearchBar  searchBar;
                          food.setUnite(jsonObject.getString("Titre_Unite"));
                          food.setCalories(Integer.parseInt(jsonObject.getString("Calories")));
                          food.setImage("http://92.222.83.184:9999" + jsonObject.getString("Image"));
+                         food.setDate(dateFinal);
                          foods.add(food);
                          Log.e("tableChar",foods.toString());
                      } catch (JSONException e) {
@@ -151,6 +193,40 @@ MaterialSearchBar  searchBar;
         });
 
         requestQueue.add(jsonArrayRequest);
+
+    }
+
+
+
+    public String getDay(Calendar calendar)
+    {
+
+        /*  Calendar calendar = Calendar.getInstance();*/
+        final int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        month=month+1;
+        String day_1="";
+        String Month_1="";
+        if(day<10)
+        {
+            day_1="0"+day;
+
+        }
+        else
+        {
+            day_1=String.valueOf(day);
+        }
+        if(month<10)
+        {
+            Month_1="0"+month;
+        }
+        else
+        {
+            Month_1=String.valueOf(month);
+        }
+        return day_1+"-"+Month_1+"-"+year;
 
     }
 }
