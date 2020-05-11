@@ -37,17 +37,16 @@
                 android:layout_marginEnd="8dp"
                 android:fontFamily="sans-serif-light"
                 android:padding="5dp"
-                android:text="Add Food"
+                android:text="Ajout de la nourriture"
                 android:textAlignment="center"
                 android:textColor="#212121"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:typeface="monospace"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
 
             <com.rengwuxian.materialedittext.MaterialEditText
                 android:id="@+id/TitreNewFoo"
@@ -55,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                android:hint="Titre Food"
+                android:hint="Nom du nourriture"
                 android:inputType="text"
                 android:textColorHint="@color/gen_black"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -239,7 +238,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                android:hint="SODIUM"
+                android:hint="Sodium"
                 android:inputType="number|numberDecimal"
                 android:textColorHint="@color/gen_black"
                 app:layout_constraintEnd_toEndOf="parent"

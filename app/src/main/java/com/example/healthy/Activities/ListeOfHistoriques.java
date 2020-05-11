@@ -78,7 +78,7 @@ Regime regime = databaseHandler.getRegime(1);
                                 {
 
                                     Insert_Historique(editText.getText().toString(),profile.get_taille(),profile.get_poids());
-                                    //  com.example.healthy.Profile.this.finish();
+                                    //  com.example.healthy.Activities.Profile.this.finish();
                                     //startActivity(new Intent(L.this,Profile.class));
                                     dataModels= databaseHandler.getListeHistorique_Regime(1);
                                     adapter= new HistoriqueAdapteur(dataModels,getApplicationContext());
@@ -96,7 +96,7 @@ Regime regime = databaseHandler.getRegime(1);
                                 {
 
                                     Insert_Historique(editText.getText().toString(),profile.get_taille(),profile.get_poids());
-                                    //  com.example.healthy.Profile.this.finish();
+                                    //  com.example.healthy.Activities.Profile.this.finish();
                                     //startActivity(new Intent(L.this,Profile.class));
                                     dataModels= databaseHandler.getListeHistorique_Regime(1);
                                     adapter= new HistoriqueAdapteur(dataModels,getApplicationContext());

@@ -1,4 +1,4 @@
-package com.example.healthy;
+package com.example.healthy.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -12,6 +12,7 @@ import com.example.healthy.Classes.Historique_Regime;
 import com.example.healthy.Classes.Profile;
 import com.example.healthy.Classes.Regime;
 import com.example.healthy.Database.DatabaseHandler;
+import com.example.healthy.R;
 
 import org.joda.time.DateTime;
 import org.joda.time.Weeks;

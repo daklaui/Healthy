@@ -579,7 +579,7 @@ else
            SharedPreferences.Editor editor = sharedpreferences.edit();
            editor.putString("Connected", "1");
            editor.commit();
-           startActivity(new Intent(Creation_Profile.this, com.example.healthy.Profile.class));
+           startActivity(new Intent(Creation_Profile.this, com.example.healthy.Activities.Profile.class));
        }
        else
        {

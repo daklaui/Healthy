@@ -1,4 +1,4 @@
-package com.example.healthy;
+package com.example.healthy.Activities;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -9,14 +9,11 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import com.app.progresviews.ProgressLine;
-import com.example.healthy.Activities.ListeOfFood;
-import com.example.healthy.Activities.ListeOfHistoriques;
-import com.example.healthy.Activities.LoginActivity;
-import com.example.healthy.Activities.addFood;
 import com.example.healthy.Classes.Account;
 import com.example.healthy.Classes.Historique_Regime;
 import com.example.healthy.Classes.Regime;
 import com.example.healthy.Database.DatabaseHandler;
+import com.example.healthy.R;
 import com.example.healthy.Service.Remainder;
 import com.github.anastr.speedviewlib.SpeedView;
 import com.github.anastr.speedviewlib.components.Section;
@@ -239,7 +236,7 @@ else
                         {
 
                             Insert_Historique(editText.getText().toString(),profile.get_taille(),profile.get_poids());
-                            com.example.healthy.Profile.this.finish();
+                            com.example.healthy.Activities.Profile.this.finish();
                             startActivity(new Intent(Profile.this,Profile.class));
 
                         }
@@ -379,7 +376,7 @@ else
             SharedPreferences.Editor editor = sharedpreferences.edit();
             editor.putString("Connected", "0");
             editor.commit();
-            com.example.healthy.Profile.this.finishAffinity();
+            com.example.healthy.Activities.Profile.this.finishAffinity();
             startActivity( new Intent(Profile.this, LoginActivity.class));
         }
 
@@ -393,15 +390,15 @@ else
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-            startActivity(new Intent(com.example.healthy.Profile.this,Suivi.class));
+            startActivity(new Intent(com.example.healthy.Activities.Profile.this, Suivi.class));
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
-            startActivity(new Intent(com.example.healthy.Profile.this, ListeOfHistoriques.class));
+            startActivity(new Intent(com.example.healthy.Activities.Profile.this, ListeOfHistoriques.class));
 
         }
 
         else if (id == R.id.ConsulterFood) {
-            startActivity(new Intent(com.example.healthy.Profile.this, ListeOfFood.class));
+            startActivity(new Intent(com.example.healthy.Activities.Profile.this, ListeOfFood.class));
 
         }
 

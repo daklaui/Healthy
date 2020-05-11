@@ -15,12 +15,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activities.ListeOfHistoriques" android:parentActivityName=".Profile"></activity>
-        <activity android:name=".Suivi" android:parentActivityName=".Profile" />
-        <activity android:name=".Activities.ListeOfFood" android:parentActivityName=".Profile" />
+        <activity android:name=".Activities.ListeOfHistoriques" android:parentActivityName=".Activities.Profile"></activity>
+        <activity android:name=".Activities.Suivi" android:parentActivityName=".Activities.Profile" />
+        <activity android:name=".Activities.ListeOfFood" android:parentActivityName=".Activities.Profile" />
         <activity android:name=".Activities.DiaryActivity" />
         <activity android:name=".Activities.InformationFood" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
@@ -28,12 +28,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Main2Activity" />
+        <activity android:name=".Activities.Main2Activity" />
         <activity android:name=".Activities.Add_Historique_Regime" />
         <activity android:name=".Activities.Aliments" />
-        <activity android:name=".Profile" />
+        <activity android:name=".Activities.Profile" />
         <activity
-            android:name=".profile_activity"
+            android:name=".Activities.profile_activity"
             android:label="@string/title_activity_profile"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activities.LoginActivity" />
@@ -41,7 +41,7 @@
         <activity android:name=".Activities.CreateProfileStep2Activity" />
         <activity android:name=".Activities.Creation_Profile" />
         <activity android:name=".Activities.CreateProfileStep1Activity" />
-        <activity android:name=".Activities.addFood" android:parentActivityName=".Profile" />
+        <activity android:name=".Activities.addFood" android:parentActivityName=".Activities.Profile" />
         <activity android:name=".Activities.RegisterActivity" />
         <activity android:name=".Activities.CreateFood" android:parentActivityName=".Activities.addFood" />
         <receiver android:name=".Service.Remainder" />

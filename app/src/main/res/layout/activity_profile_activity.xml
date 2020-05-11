@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".profile_activity">
+    tools:context=".Activities.profile_activity">
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -62,7 +62,7 @@
                                 android:layout_marginTop="5dp"
                                 android:layout_marginRight="5dp"
                                 android:layout_marginBottom="5dp"
-                                android:text="Current  Weight"
+                                android:text="Poids actuel : "
                                 android:textAlignment="center"
                                 android:textColor="#000000"
                                 android:textSize="24sp"
@@ -109,10 +109,10 @@
                                 android:layout_marginTop="5dp"
                                 android:layout_marginRight="5dp"
                                 android:layout_marginBottom="5dp"
-                                android:text="Week Goal"
+                                android:text="Obj Hebdomadaire :"
                                 android:textAlignment="center"
                                 android:textColor="#000000"
-                                android:textSize="24sp"
+                                android:textSize="14sp"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -160,7 +160,7 @@
                                 android:layout_marginRight="2dp"
                                 android:layout_marginBottom="5dp"
                                 android:layout_weight="10"
-                                android:text=" Number of calories per day"
+                                android:text="Nombre de calories jounaliéres"
                                 android:textColor="#000000"
                                 android:textSize="24sp"
                                 android:textStyle="bold" />

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".Profile"
+    tools:context=".Activities.Profile"
     tools:showIn="@layout/app_bar_profile">
 
     <FrameLayout
@@ -66,10 +66,10 @@
                                 android:layout_marginTop="5dp"
                                 android:layout_marginRight="5dp"
                                 android:layout_marginBottom="5dp"
-                                android:text="Current  Weight"
+                                android:text="Poids actuel "
                                 android:textAlignment="center"
                                 android:textColor="#000000"
-                                android:textSize="24sp"
+                                android:textSize="12sp"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -106,17 +106,17 @@
                             <TextView
 
                                 android:id="@+id/textView13"
-                                android:layout_width="wrap_content"
+                                android:layout_width="139dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginLeft="5dp"
                                 android:layout_marginTop="5dp"
                                 android:layout_marginRight="5dp"
                                 android:layout_marginBottom="5dp"
-                                android:text="Week Goal"
+                                android:text="Objectif Hebdomadaire"
                                 android:textAlignment="center"
                                 android:textColor="#000000"
-                                android:textSize="24sp"
+                                android:textSize="10sp"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -164,7 +164,7 @@
                                 android:layout_marginRight="2dp"
                                 android:layout_marginBottom="5dp"
                                 android:layout_weight="10"
-                                android:text=" Number of calories per day"
+                                android:text="Nombre de calories journaliéres "
                                 android:textColor="#000000"
                                 android:textSize="24sp"
                                 android:textStyle="bold" />

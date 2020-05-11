@@ -13,7 +13,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:hint="New poids"
+        android:hint="Nouveau poids"
         android:inputType="numberDecimal"
         android:textColorHint="@color/gen_black"
         app:layout_constraintEnd_toEndOf="parent"

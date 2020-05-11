@@ -15,7 +15,6 @@ import android.widget.TextView;
 
 import com.example.healthy.Classes.Account;
 import com.example.healthy.Database.DatabaseHandler;
-import com.example.healthy.Profile;
 import com.example.healthy.R;
 
 public class LoginActivity extends AppCompatActivity {
