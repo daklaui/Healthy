@@ -8,6 +8,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
         android:padding="20dp">
 
         <LinearLayout
@@ -28,7 +29,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-smallcaps"
-                    android:text="Objectif de poids"
+                    android:text="Objectif : "
                     android:textAlignment="textStart"
                     android:textAllCaps="false"
                     android:textColor="#212121"
@@ -45,12 +46,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-
-                        android:ems="10"
+                        android:ems="5"
                         android:inputType="number"
                         android:maxLength="3"
                         android:textAlignment="center"
-                        android:textColor="#212121" />
+                        android:textColor="@color/colorText" />
 
 
                     <TextView
@@ -59,7 +59,7 @@
                         android:layout_height="match_parent"
                         android:layout_margin="10dp"
                         android:fontFamily="sans-serif-smallcaps"
-                        android:text="kilogramme"
+                        android:text="kilogrammes"
                         android:textColor="#212121"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -82,16 +82,12 @@
                     android:id="@+id/textView4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:paddingLeft="5dp"
-                    android:paddingTop="5dp"
-                    android:paddingEnd="5dp"
-                    android:paddingRight="5dp"
+                    android:layout_marginTop="20dp"
+                    android:padding="20dp"
                     android:text="Quel est votre objectif hebdomadaire par semaine ?"
-                    android:textColor="@color/gen_black"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textAlignment="center"
+                    android:textColor="@color/lightPrimaryColor"
+                    android:textSize="18sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -104,7 +100,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Gagner 0,25 Kg" />
+                        android:text="Gagner 0,25 Kg"
+                        android:textSize="18sp"  />
 
                 </LinearLayout>
 
@@ -113,13 +110,29 @@
                     android:layout_height="match_parent"
                     android:layout_marginTop="10dp"
                     android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
 
                     <RadioButton
                         android:id="@+id/r2_Ga"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Gagner 0,5 Kg  "
+                        android:textAlignment="viewStart"
+                        android:textSize="18sp" />
+                    <TextView
+                        android:id="@+id/textView15"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Gagner 0,5 Kg (recommandé)" />
+                        android:text="(Recommandé)"
+                        android:textColor="@color/colorText"
+                        android:textSize="18sp"
+                        android:textStyle="italic" />
+                    </LinearLayout>
 
                 </LinearLayout>
             </LinearLayout>

@@ -109,15 +109,6 @@ public class Creation_Profile extends AppCompatActivity {
                     else
                      if (IMC > 25)
                         t4.setText("1700 calories Par jour");
-
-
-
-
-
-
-
-
-
                     btnNext.setVisibility(View.GONE);
                     btnSkip.setVisibility(View.VISIBLE);
                     btnValide.setVisibility(View.VISIBLE);
