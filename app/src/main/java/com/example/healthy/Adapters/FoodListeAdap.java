@@ -146,7 +146,7 @@ class MyViewHolder_this extends RecyclerView.ViewHolder {
 
     }
 
-    //add function to add new obejct
+    //add fct  to  add new  obejct
     public void bind(final Food myObject) {
 
     }
