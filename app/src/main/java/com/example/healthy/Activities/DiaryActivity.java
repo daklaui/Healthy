@@ -21,22 +21,8 @@ public class DiaryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_diary);
 
         FloatingActionButton fab = findViewById(R.id.fab);
-        fab1 = findViewById(R.id.fab1);
-        fab2 = findViewById(R.id.fab2);
-
 
         fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(!isFABOpen){
-                    showFABMenu();
-                }else{
-                    closeFABMenu();
-                }
-            }
-    });
-
-        fab1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(DiaryActivity.this , addFood.class );
@@ -46,18 +32,7 @@ public class DiaryActivity extends AppCompatActivity {
 
 
 
-
 }
-    private void showFABMenu(){
-        isFABOpen=true;
-        fab1.animate().translationY(-getResources().getDimension(R.dimen.standard_55));
-        fab2.animate().translationY(-getResources().getDimension(R.dimen.standard_105));
-    }
 
-    private void closeFABMenu(){
-        isFABOpen=false;
-        fab1.animate().translationY(0);
-        fab2.animate().translationY(0);
-    }
 
 }

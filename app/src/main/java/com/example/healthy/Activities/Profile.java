@@ -80,8 +80,7 @@ public class Profile extends AppCompatActivity
         Account account=db.getAccount_parid(1);
         Historique_Regime historique_regime=db.isteHistorique_Regime();
         FloatingActionButton fab = findViewById(R.id.fab);
-        fab1 = findViewById(R.id.fab1);
-        fab2 = findViewById(R.id.fab2);
+
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         /**********************************************************/
 
@@ -89,19 +88,9 @@ public class Profile extends AppCompatActivity
 
 
 /*****************************************************************************/
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(!isFABOpen){
-                   // Toast.makeText(Profile.this,c.getTime().toString(),Toast.LENGTH_LONG).show();
-                    showFABMenu();
-                }else{
-                    closeFABMenu();
-                }
-            }
-        });
 
-        fab1.setOnClickListener(new View.OnClickListener() {
+
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Profile.this , addFood.class );
