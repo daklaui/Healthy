@@ -56,7 +56,7 @@ public class FoodAdapter extends RecyclerView.Adapter<MyViewHolder> {
         holder.foodunite.setText("Unite: "+myObject.getUnite());
         Picasso.with(context).load(myObject.getImage()).fit().centerInside().into(holder.imageView);
         holder.addfood.setOnClickListener(new View.OnClickListener() {
-            //set click action
+            //set on click action
             @Override
             public void onClick(View v) {
                 final DatabaseHandler databaseHandler=new DatabaseHandler(activity);

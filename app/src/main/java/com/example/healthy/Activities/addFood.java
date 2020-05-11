@@ -44,7 +44,7 @@ RecyclerView recyclerView;
 MaterialSearchBar  searchBar;
 String dateFinal="";
 String dateF="";
-   // Toolbar mActionBarToolbar;
+
     FloatingActionButton fab1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
