@@ -24,6 +24,7 @@ public class ListeOfFood extends AppCompatActivity {
     RecyclerView recyclerView;
     DatabaseHandler databaseHandler;
     ProgressLine progressLine;
+    String list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

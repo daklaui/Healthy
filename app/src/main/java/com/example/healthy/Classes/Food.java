@@ -27,7 +27,7 @@ private String unite;
     public void setUnite(String unite) {
         this.unite = unite;
     }
-
+//constructerfood
     public Food(int id,String title, int calories, String unite, String qnparUnite, String date, String image) {
         this.id=id;
         this.title = title;
