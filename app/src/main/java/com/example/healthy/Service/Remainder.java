@@ -12,8 +12,11 @@ public class Remainder extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
+        //creation de l'instance
         NotificationHelper notificationHelper = new NotificationHelper(context);
+        //configurer la notification
         NotificationCompat.Builder nb = notificationHelper.getChannelNotification();
+        // lancer notificaion
         notificationHelper.getManager().notify(1, nb.build());
     }
 }
