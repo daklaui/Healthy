@@ -25,7 +25,7 @@ import java.util.List;
 public class FoodListeAdap extends RecyclerView.Adapter<MyViewHolder_this> {
     private Context context;
     private List<Food> foodlist;
-    String foodliist;
+    String foodlst;
     Activity activity;
     AlertDialog alertDialog;
     public FoodListeAdap(Context context, List<Food> foodlist,Activity activity) {
@@ -129,7 +129,7 @@ class MyViewHolder_this extends RecyclerView.ViewHolder {
     public Button addfood;
     //image view
     public ImageView imageView;
-    // private ImageView imageView;
+    // private ImageView imgView;
 
     //itemView is the view of the corresponding cell
     public MyViewHolder_this(View itemView) {
