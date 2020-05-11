@@ -94,6 +94,30 @@ public class Creation_Profile extends AppCompatActivity {
             public void onPageSelected(int position) {
                 if (position==7) {
                     // last page. make button text to GOT IT
+                    TextView t1=pagerAdapter.getItem(7).getView().findViewById(R.id.tvemail_text) ;
+                    t1.setText(Email.getText());
+                    TextView t2=pagerAdapter.getItem(7).getView().findViewById(R.id.tvpoids_text) ;
+                    t2.setText(Poids.getText()+" KG");
+                    TextView t3=pagerAdapter.getItem(7).getView().findViewById(R.id.tvobjectif_text) ;
+                    t3.setText(New_Poids_Perder.getText()+" KG");
+                    TextView t4=pagerAdapter.getItem(7).getView().findViewById(R.id.tvregime_text) ;
+                    if(IMC < 18.5)
+                        t4.setText("2200 calories Par jour");
+                    else
+                    if((IMC > 18.5) && (IMC <= 25))
+                        t4.setText("2000 calories Par jour");
+                    else
+                     if (IMC > 25)
+                        t4.setText("1700 calories Par jour");
+
+
+
+
+
+
+
+
+
                     btnNext.setVisibility(View.GONE);
                     btnSkip.setVisibility(View.VISIBLE);
                     btnValide.setVisibility(View.VISIBLE);
