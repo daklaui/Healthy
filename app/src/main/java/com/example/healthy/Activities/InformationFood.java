@@ -1,4 +1,4 @@
-package com.example.healthy;
+package com.example.healthy.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,6 +16,7 @@ import com.android.volley.toolbox.Volley;
 import com.app.progresviews.ProgressWheel;
 import com.example.healthy.Adapters.FoodAdapter;
 import com.example.healthy.Classes.Food;
+import com.example.healthy.R;
 import com.king.view.arcseekbar.ArcSeekBar;
 
 import org.json.JSONArray;

@@ -12,10 +12,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.healthy.Classes.Account;
-import com.example.healthy.Creation_Profile;
 import com.example.healthy.Database.DatabaseHandler;
 import com.example.healthy.Profile;
 import com.example.healthy.R;

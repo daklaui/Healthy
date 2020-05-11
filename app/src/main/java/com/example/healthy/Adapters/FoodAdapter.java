@@ -8,28 +8,19 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.healthy.Classes.Food;
-import com.example.healthy.Classes.Nourriture;
-import com.example.healthy.Creation_Profile;
 import com.example.healthy.Database.DatabaseHandler;
-import com.example.healthy.ListeOfFood;
-import com.example.healthy.LoadingDialog;
+import com.example.healthy.Activities.ListeOfFood;
 import com.example.healthy.R;
-import com.example.healthy.addFood;
 import com.squareup.picasso.Picasso;
-
-import org.json.JSONObject;
 
 import java.util.Calendar;
 import java.util.List;
@@ -82,19 +73,20 @@ public class FoodAdapter extends RecyclerView.Adapter<MyViewHolder> {
                 /********************************************************************/
 
                 TitreFood.setText(myObject.getTitle());
-                Unite.setText("Unite : "+myObject.getCalories()+" cal/"+ myObject.getUnite());
+                Unite.setText("Unite : "+myObject.getCalories()+" cal/ "+myObject.getQnparUnite()+"/"+ myObject.getUnite());
 
 
                 confirme.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        final double Quntité=Integer.parseInt(foodval.getText().toString());
+                        final double Quntité=Double.parseDouble(foodval.getText().toString());
                         Food food = new Food();
                         int nomberdecalories = 0;
                         Log.e("TableMoataz", myObject.getQnparUnite()+"/"+myObject.getCalories()+"/"+Quntité);
                         switch(myObject.getUnite())
                         {
                             case "g" : nomberdecalories=(int)Math.round(Quntité*(myObject.getCalories()/Double.parseDouble(myObject.getQnparUnite())));break;
+                            case "ml" : nomberdecalories=(int)Math.round(Quntité*(myObject.getCalories()/Double.parseDouble(myObject.getQnparUnite())));break;
                             default:nomberdecalories=(int)Math.round(Quntité*myObject.getCalories());
                         }
 

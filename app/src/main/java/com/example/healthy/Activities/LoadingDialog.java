@@ -1,8 +1,10 @@
-package com.example.healthy;
+package com.example.healthy.Activities;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.view.LayoutInflater;
+
+import com.example.healthy.R;
 
 public class LoadingDialog {
     public LoadingDialog(Activity activity) {

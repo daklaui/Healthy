@@ -6,9 +6,7 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.healthy.Database.DatabaseHandler;
 import com.example.healthy.R;
-import com.example.healthy.addFood;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class DiaryActivity extends AppCompatActivity {

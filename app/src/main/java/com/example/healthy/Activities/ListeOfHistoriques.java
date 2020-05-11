@@ -1,4 +1,4 @@
-package com.example.healthy;
+package com.example.healthy.Activities;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,16 +9,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TableLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
 
 import com.example.healthy.Adapters.HistoriqueAdapteur;
 import com.example.healthy.Classes.Historique_Regime;
 import com.example.healthy.Classes.Regime;
 import com.example.healthy.Database.DatabaseHandler;
+import com.example.healthy.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.Calendar;

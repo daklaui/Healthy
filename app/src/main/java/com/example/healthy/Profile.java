@@ -1,7 +1,6 @@
 package com.example.healthy;
 
 import android.app.AlarmManager;
-import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -10,8 +9,10 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import com.app.progresviews.ProgressLine;
-import com.example.healthy.Activities.DiaryActivity;
+import com.example.healthy.Activities.ListeOfFood;
+import com.example.healthy.Activities.ListeOfHistoriques;
 import com.example.healthy.Activities.LoginActivity;
+import com.example.healthy.Activities.addFood;
 import com.example.healthy.Classes.Account;
 import com.example.healthy.Classes.Historique_Regime;
 import com.example.healthy.Classes.Regime;
@@ -21,7 +22,6 @@ import com.github.anastr.speedviewlib.SpeedView;
 import com.github.anastr.speedviewlib.components.Section;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import android.util.Log;
 import android.view.View;
 
 import androidx.core.view.GravityCompat;
@@ -37,10 +37,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.joda.time.DateTime;
 import org.joda.time.Weeks;
@@ -48,9 +45,7 @@ import org.joda.time.Weeks;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 
-import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -401,12 +396,12 @@ else
             startActivity(new Intent(com.example.healthy.Profile.this,Suivi.class));
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
-            startActivity(new Intent(com.example.healthy.Profile.this,ListeOfHistoriques.class));
+            startActivity(new Intent(com.example.healthy.Profile.this, ListeOfHistoriques.class));
 
         }
 
         else if (id == R.id.ConsulterFood) {
-            startActivity(new Intent(com.example.healthy.Profile.this,ListeOfFood.class));
+            startActivity(new Intent(com.example.healthy.Profile.this, ListeOfFood.class));
 
         }
 

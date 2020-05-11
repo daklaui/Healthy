@@ -1,4 +1,4 @@
-package com.example.healthy;
+package com.example.healthy.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -20,8 +20,6 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
-import com.divyanshu.colorseekbar.ColorSeekBar;
-import com.example.healthy.Activities.LoginActivity;
 import com.example.healthy.Adapters.CustomViewPagerNoSwip;
 import com.example.healthy.Classes.Account;
 import com.example.healthy.Classes.Diet;
@@ -37,6 +35,7 @@ import com.example.healthy.Fragments_Profile.Step5;
 import com.example.healthy.Fragments_Profile.Step6;
 import com.example.healthy.Fragments_Profile.Step7;
 import com.example.healthy.Fragments_Profile.Step8;
+import com.example.healthy.R;
 import com.github.anastr.speedviewlib.SpeedView;
 import com.github.anastr.speedviewlib.components.Section;
 

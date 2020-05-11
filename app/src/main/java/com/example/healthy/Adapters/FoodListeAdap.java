@@ -13,7 +13,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.app.progresviews.ProgressLine;
 import com.example.healthy.Classes.Food;
+import com.example.healthy.Classes.Regime;
+import com.example.healthy.Database.DatabaseHandler;
 import com.example.healthy.R;
 import com.squareup.picasso.Picasso;
 
@@ -46,6 +49,71 @@ public class FoodListeAdap extends RecyclerView.Adapter<MyViewHolder_this> {
         holder.foodcalories.setText(myObject.getCalories()+"Cal");
         holder.foodunite.setText("Unite: "+myObject.getUnite());
         Picasso.with(context).load(myObject.getImage()).fit().centerInside().into(holder.imageView);
+        holder.addfood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final DatabaseHandler databaseHandler=new DatabaseHandler(activity);
+                databaseHandler.deleteTitle(myObject.getId());
+                foodlist.remove(position);
+                Regime regime=databaseHandler.getRegime(1);
+
+
+
+                int cal;
+                if(regime.getTyp_regime().contains("GA"))
+                {
+                    if(regime.getObjectif()==1)
+                    {
+                        cal=databaseHandler.getDiet(6).getCalories();
+                    }
+                    else
+                    {
+                        cal=databaseHandler.getDiet(7).getCalories();
+                    }
+                }
+                else
+                if(regime.getTyp_regime().contains("PERDER"))
+                {
+                    if(regime.getObjectif()==1)
+                    {
+                        cal=databaseHandler.getDiet(1).getCalories();
+                    }
+                    else if(regime.getObjectif()==2)
+                    {
+                        cal=databaseHandler.getDiet(2).getCalories();
+                    }
+                    else if(regime.getObjectif()==3)
+                    {
+                        cal=databaseHandler.getDiet(3).getCalories();
+                    }
+                    else
+                    {
+                        cal=databaseHandler.getDiet(4).getCalories();
+                    }
+                }
+                else
+                {
+
+                    cal=databaseHandler.getDiet(5).getCalories();
+                }
+
+
+
+                ProgressLine progressLine = activity.findViewById(R.id.progress_line);
+
+                int sum=0;
+                for(int i=0;i<foodlist.size();i++)
+                {
+                    sum+=foodlist.get(i).getCalories();
+                }
+
+
+             notifyItemChanged(position);
+                int pourcentage= (int) ((100*Math.abs(sum)/cal));
+                progressLine.setmValueText(String.valueOf((cal-sum)));
+                progressLine.setmPercentage(pourcentage);
+            }
+        });
     }
 
     @Override
@@ -71,7 +139,8 @@ class MyViewHolder_this extends RecyclerView.ViewHolder {
         foodunite = itemView.findViewById(R.id.foodunite);
         addfood = itemView.findViewById(R.id.addfood);
         imageView = itemView.findViewById(R.id.foodimage);
-        addfood.setVisibility(View.GONE);
+        addfood.setText("Remove");
+        // addfood.setVisibility(View.GONE);
 
     }
 

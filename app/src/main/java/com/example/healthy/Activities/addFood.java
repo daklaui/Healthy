@@ -1,4 +1,4 @@
-package com.example.healthy;
+package com.example.healthy.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,10 +14,8 @@ import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Toast;
 
 
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 
@@ -26,8 +24,8 @@ import com.android.volley.request.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.healthy.Adapters.FoodAdapter;
 import com.example.healthy.Classes.Food;
+import com.example.healthy.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.gson.JsonObject;
 import com.mancj.materialsearchbar.MaterialSearchBar;
 
 import org.json.JSONArray;
@@ -67,7 +65,7 @@ String dateFinal="";
         fab1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(addFood.this,CreateFood.class));
+                startActivity(new Intent(addFood.this, CreateFood.class));
             }
         });
         searchBar.addTextChangeListener(new TextWatcher() {

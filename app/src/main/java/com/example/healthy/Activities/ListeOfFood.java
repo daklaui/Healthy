@@ -1,4 +1,4 @@
-package com.example.healthy;
+package com.example.healthy.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -6,15 +6,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.app.progresviews.ProgressLine;
-import com.app.progresviews.ProgressWheel;
-import com.example.healthy.Adapters.FoodAdapter;
 import com.example.healthy.Adapters.FoodListeAdap;
 import com.example.healthy.Classes.Food;
 import com.example.healthy.Classes.Regime;
 import com.example.healthy.Database.DatabaseHandler;
+import com.example.healthy.R;
 
 import java.util.Calendar;
 import java.util.List;
@@ -40,12 +38,14 @@ public class ListeOfFood extends AppCompatActivity {
         recyclerView=findViewById(R.id.listeoffoodlocal);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         databaseHandler=new DatabaseHandler(this);
+
         Regime regime=databaseHandler.getRegime(1);
         progressLine=findViewById(R.id.progress_line);
         /* starts before 1 month from now */
         Calendar startDate = Calendar.getInstance();
         List<Food> foods = databaseHandler.getListeNourriture(getDay(startDate));
         recyclerView.setAdapter(new FoodListeAdap(getApplicationContext(), foods,ListeOfFood.this));
+
         int month=startDate.get(Calendar.MONTH);
 
 

@@ -339,14 +339,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public List<Food> getListeNourriture(String Date) {
         SQLiteDatabase db = this.getWritableDatabase();
         List<Food> Nourriture= new ArrayList<>();
-        Cursor cursor = db.query(DAILY_FOOD, new String[] { DAILY_FOOD_TITRE ,
+        Cursor cursor = db.query(DAILY_FOOD, new String[] {DAILY_FOOD_ID, DAILY_FOOD_TITRE ,
                         DAILY_FOOD_UNITE ,DAILY_FOOD_CALORIES,DAILY_FOOD_DATE, DAILY_FOOD_QUNTITE,DAILY_FOOD_IMAGE},DAILY_FOOD_DATE+"=?",
                 new String[] {Date}, null, null, null);
         if (cursor != null)
             if(cursor.moveToFirst())
             {
                 do{
-                    Food nourriture = new Food(cursor.getString(0),Integer.parseInt(cursor.getString(2)),cursor.getString(1),cursor.getString(4),cursor.getString(3),cursor.getString(5));
+                    Food nourriture = new Food(Integer.parseInt(cursor.getString(0)),cursor.getString(1),Integer.parseInt(cursor.getString(3)),cursor.getString(2),cursor.getString(5),cursor.getString(4),cursor.getString(6));
                     Nourriture.add(nourriture);
                 }while (cursor.moveToNext());
             }
@@ -355,6 +355,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         return Nourriture;
     }
-
+    public boolean deleteTitle(int id)
+    {  SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(DAILY_FOOD, DAILY_FOOD_ID + "=" + id, null) > 0;
+    }
 }
 

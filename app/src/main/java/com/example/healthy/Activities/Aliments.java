@@ -1,8 +1,10 @@
-package com.example.healthy;
+package com.example.healthy.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.healthy.R;
 
 public class Aliments extends AppCompatActivity {
 
