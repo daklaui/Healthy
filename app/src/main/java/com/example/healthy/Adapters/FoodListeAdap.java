@@ -45,7 +45,7 @@ public class FoodListeAdap extends RecyclerView.Adapter<MyViewHolder_this> {
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder_this holder, int position) {
         final Food myObject = foodlist.get(position);
-        //holder.bind(myObject);
+
         holder.foodtitel.setText(myObject.getTitle());
         holder.foodcalories.setText(myObject.getCalories()+"Cal");
         holder.foodunite.setText("Unite: "+myObject.getUnite());
@@ -129,20 +129,20 @@ class MyViewHolder_this extends RecyclerView.ViewHolder {
     public Button addfood;
     //image view
     public ImageView imageView;
-    // private ImageView imgView;
+    // private ImageView imageView;
 
     //itemView is the view of the corresponding cell
     public MyViewHolder_this(View itemView) {
         super(itemView);
 
-        //set view holder
+        //set vie w holder
         foodtitel = itemView.findViewById(R.id.foodtitel);
         foodcalories = itemView.findViewById(R.id.foodcalories);
         foodunite = itemView.findViewById(R.id.foodunite);
         addfood = itemView.findViewById(R.id.addfood);
         imageView = itemView.findViewById(R.id.foodimage);
         addfood.setText("Remove");
-        // addfood.setVisibility(View.GONE);
+
 
     }
 

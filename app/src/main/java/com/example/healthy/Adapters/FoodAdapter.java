@@ -39,14 +39,14 @@ public class FoodAdapter extends RecyclerView.Adapter<MyViewHolder> {
         this.activity = activity;
     }
 
-//cretae view holder
+//cretae view-holder
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.food_entry_view,parent,false);
         return new MyViewHolder(view);
     }
-// match the template withe the corresponding class
+// match the template with the corresponding class
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         final Food myObject = foodlist.get(position);
@@ -193,9 +193,9 @@ public class FoodAdapter extends RecyclerView.Adapter<MyViewHolder> {
     public TextView foodtitel,foodcalories,foodunite;
      public  Button addfood;
      public ImageView imageView;
-    // private ImageView imageView;
+    // private ImageView imgView;
 
-    //itemView corresponding to the view of the cell
+    //itemView corresponding to the view of cell
     public MyViewHolder(View itemView) {
         super(itemView);
 
