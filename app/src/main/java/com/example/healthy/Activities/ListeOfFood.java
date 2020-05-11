@@ -24,6 +24,7 @@ public class ListeOfFood extends AppCompatActivity {
     RecyclerView recyclerView;
     DatabaseHandler databaseHandler;
     ProgressLine progressLine;
+    String listF;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,7 +92,7 @@ public class ListeOfFood extends AppCompatActivity {
 
         startDate.add(Calendar.MONTH, -month);
 
-        /* ends after 1 month from now */
+        // ends after 1 month from now
         Calendar endDate = Calendar.getInstance();
         endDate.add(Calendar.MONTH, 1);
 
@@ -116,7 +117,7 @@ public class ListeOfFood extends AppCompatActivity {
     public String getDay(Calendar calendar)
     {
 
-      /*  Calendar calendar = Calendar.getInstance();*/
+      //  Calendar calendar = Calendar.getInstance();
         final int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);
         final int day = calendar.get(Calendar.DAY_OF_MONTH);

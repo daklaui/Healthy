@@ -43,7 +43,8 @@ public class addFood extends AppCompatActivity {
 RecyclerView recyclerView;
 MaterialSearchBar  searchBar;
 String dateFinal="";
-   // Toolbar mActionBarToolbar;
+String date="";
+
     FloatingActionButton fab1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,7 +93,7 @@ String dateFinal="";
 
         startDate.add(Calendar.MONTH, -month);
 
-        /* ends after 1 month from now */
+        // ends after 1 month from now
         Calendar endDate = Calendar.getInstance();
         endDate.add(Calendar.MONTH, 1);
 

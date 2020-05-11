@@ -25,6 +25,7 @@ import java.util.List;
 public class FoodListeAdap extends RecyclerView.Adapter<MyViewHolder_this> {
     private Context context;
     private List<Food> foodlist;
+    String foodliist;
     Activity activity;
     AlertDialog alertDialog;
     public FoodListeAdap(Context context, List<Food> foodlist,Activity activity) {
@@ -44,7 +45,7 @@ public class FoodListeAdap extends RecyclerView.Adapter<MyViewHolder_this> {
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder_this holder, int position) {
         final Food myObject = foodlist.get(position);
-        //holder.bind(myObject);
+
         holder.foodtitel.setText(myObject.getTitle());
         holder.foodcalories.setText(myObject.getCalories()+"Cal");
         holder.foodunite.setText("Unite: "+myObject.getUnite());
@@ -126,28 +127,27 @@ public class FoodListeAdap extends RecyclerView.Adapter<MyViewHolder_this> {
 class MyViewHolder_this extends RecyclerView.ViewHolder {
     public TextView foodtitel, foodcalories, foodunite;
     public Button addfood;
+    //image view
     public ImageView imageView;
     // private ImageView imageView;
 
-    //itemView est la vue correspondante à 1 cellule
+    //itemView is the view of the corresponding cell
     public MyViewHolder_this(View itemView) {
         super(itemView);
 
-        //c'est ici que l'on fait nos findView
+        //set vie w holder
         foodtitel = itemView.findViewById(R.id.foodtitel);
         foodcalories = itemView.findViewById(R.id.foodcalories);
         foodunite = itemView.findViewById(R.id.foodunite);
         addfood = itemView.findViewById(R.id.addfood);
         imageView = itemView.findViewById(R.id.foodimage);
         addfood.setText("Remove");
-        // addfood.setVisibility(View.GONE);
+
 
     }
 
-    //puis ajouter une fonction pour remplir la cellule en fonction d'un MyObject
+    //add function to add new obejct
     public void bind(final Food myObject) {
-        // textViewView.setText(myObject);
 
-        // Picasso.with(imageView.getContext()).load(myObject.getImageUrl()).centerCrop().fit().into(imageView);
     }
 }

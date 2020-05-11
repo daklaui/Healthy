@@ -58,7 +58,7 @@ EditText TitreNewFoo,CaloriesFood,ProteinesFood,GlucidesFood,CalciumFood,FerFood
     Uri uri;
     Button uploade;
     LoadingDialog loadingDialog;
-
+//create food using api
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -39,14 +39,14 @@ public class FoodAdapter extends RecyclerView.Adapter<MyViewHolder> {
         this.activity = activity;
     }
 
-
+//cretae view-holder
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.food_entry_view,parent,false);
         return new MyViewHolder(view);
     }
-
+// match the template with the corresponding class
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         final Food myObject = foodlist.get(position);
@@ -56,6 +56,7 @@ public class FoodAdapter extends RecyclerView.Adapter<MyViewHolder> {
         holder.foodunite.setText("Unite: "+myObject.getUnite());
         Picasso.with(context).load(myObject.getImage()).fit().centerInside().into(holder.imageView);
         holder.addfood.setOnClickListener(new View.OnClickListener() {
+            //set on click action
             @Override
             public void onClick(View v) {
                 final DatabaseHandler databaseHandler=new DatabaseHandler(activity);
@@ -63,14 +64,14 @@ public class FoodAdapter extends RecyclerView.Adapter<MyViewHolder> {
                 LayoutInflater inflater = activity.getLayoutInflater();
                 View mview=  inflater.inflate(R.layout.addfood_layout,null);
 
-                /******************************************************************/
+                /********************************************************/
 
                 final EditText foodval=mview.findViewById(R.id.food_newVal);
                 Button confirme=mview.findViewById(R.id.btnaddfoddlocal);
                 Button cancel=mview.findViewById(R.id.btnCancelloCal);
                 TextView TitreFood=mview.findViewById(R.id.TitreFood);
                 TextView Unite=mview.findViewById(R.id.Unite_Add);
-                /********************************************************************/
+                /********************************************************/
 
                 TitreFood.setText(myObject.getTitle());
                 Unite.setText("Unite : "+myObject.getCalories()+" cal/ "+myObject.getQnparUnite()+"/"+ myObject.getUnite());
@@ -125,7 +126,7 @@ public class FoodAdapter extends RecyclerView.Adapter<MyViewHolder> {
             }
         });
     }
-
+// return date
     private String getDay() {
         Calendar calendar = Calendar.getInstance();
         final int year = calendar.get(Calendar.YEAR);
@@ -192,13 +193,13 @@ public class FoodAdapter extends RecyclerView.Adapter<MyViewHolder> {
     public TextView foodtitel,foodcalories,foodunite;
      public  Button addfood;
      public ImageView imageView;
-    // private ImageView imageView;
+    // private ImageView imgView;
 
-    //itemView est la vue correspondante à 1 cellule
+    //itemView corresponding to the view of cell
     public MyViewHolder(View itemView) {
         super(itemView);
 
-        //c'est ici que l'on fait nos findView
+        //
          foodtitel = itemView.findViewById(R.id.foodtitel);
          foodcalories = itemView.findViewById(R.id.foodcalories);
          foodunite = itemView.findViewById(R.id.foodunite);
@@ -207,11 +208,10 @@ public class FoodAdapter extends RecyclerView.Adapter<MyViewHolder> {
 
     }
 
-    //puis ajouter une fonction pour remplir la cellule en fonction d'un MyObject
     public void bind(final Food myObject){
-       // textViewView.setText(myObject);
 
-        // Picasso.with(imageView.getContext()).load(myObject.getImageUrl()).centerCrop().fit().into(imageView);
+
+
     }
 
 
